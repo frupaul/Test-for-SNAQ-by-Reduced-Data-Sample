@@ -563,7 +563,24 @@ only takes fewer than 9 hours, we can do give a try.
 Final Comparison of All Results Close Enough to the Best Model
 --------------------------------------------------
 
+From all the timetests above, finally `timetest8` and `timetest13` show some nice results. However,
+the preivous timetests are all based on the criteria of choosing the log-likelihood of the
+selected model as small as possible. However, having a small log-likelihood is not enough
+to determine the precision of models from timetests. We also want the models from timetests
+to have the same location of hyperdizations as the best model has. To check the hyperdization
+locations, we need to visualize the tree model. We will need the function *plot* in
+*PhyloNetworks*. So we have three tree models to visualize: `net1_snaq.out`, `timetest8_snaq.out` and
+`timetest13_snaq,out`.
 
+    T1 = readTopology("net1_snaq.out");
+    T2 = readTopology("timetest8_snaq.out");
+    T3 = readTopology("timetest13_snaq.out");
+    p1 = plot(T1, showGamma=true);
+    p2 = plot(T2, showGamma=true);
+    p3 = plot(T3, showGamma=true).
+
+
+    
 
 Suggestions
 ---------------------------------------------------
