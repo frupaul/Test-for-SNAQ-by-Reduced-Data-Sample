@@ -575,12 +575,27 @@ locations, we need to visualize the tree model. We will need the function *plot*
     T1 = readTopology("net1_snaq.out");
     T2 = readTopology("timetest8_snaq.out");
     T3 = readTopology("timetest13_snaq.out");
-    p1 = plot(T1, showGamma=true);
-    p2 = plot(T2, showGamma=true);
-    p3 = plot(T3, showGamma=true).
+    p1 = plot(T1, showGamma=true)
+    p2 = plot(T2, showGamma=true)
+    p3 = plot(T3, showGamma=true)
 
-
-    
+By visualizing these three models, we could find that `timetest8_snaq.out` and `timetest13_snaq,out`
+have almost the identical model and the hyperdization happened at the same place with the same probability.
+Actully, compared to the best model, these two timetests just have the hyperdization at the same location.
+The only difference is the probability of this hyperdization. So probably, these two changes of parameters
+could help save the time and retain the precision in this case. `timetest8_snaq.out` needs more than 13 hours
+and `timetest13_snaq,out` needs lower than 9 hours. However, generally considering all results of ten runs,
+`timetest8_snaq.out` will indeed be better than `timetest13_snaq,out` (because a smaller threshold for
+*ftolRel*).
 
 Suggestions
 ---------------------------------------------------
+
+Running polygentic trees model is definitely a time-consuming process. For some scientists, saving time is
+just sving money, so they want a nice answer quickly, which means they persue the efficiency. For some other
+scientists, they may had already spent years to collcted the data, so the time is not the burden for them to
+find the most accurate model. Then they just want precision.
+From the tests to this reduced sample dataset of polygentic trees, my suggestions is that when using *snaq!* to
+run the model selection, first you may need to use *hmax* equal to 0 to find the best starting tree, and Second,
+you may just increase the threshold of parameters  *xtolAbs* and *xotRel* to have a general idea about the whole
+model in less time. Then persuing the efficiency or persuing the precision just depends on the users themselves.
