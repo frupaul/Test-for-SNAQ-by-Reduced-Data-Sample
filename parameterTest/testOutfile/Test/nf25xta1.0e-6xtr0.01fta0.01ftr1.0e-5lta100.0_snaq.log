@@ -1,0 +1,63 @@
+optimization of topology, BL and inheritance probabilities using:
+ hmax = 1,
+ tolerance parameters: ftolRel=1.0e-5, ftolAbs=0.01,
+                       xtolAbs=1.0e-6, xtolRel=0.01.
+ max number of failed proposals = 25, liktolAbs = 100.0.
+rootname for files: nf25xta1.0e-6xtr0.01fta0.01ftr1.0e-5lta100.0_snaq
+BEGIN: 2 runs on starting tree (2,3,(4,(5,(1,6):0.386):1.19):0.028);
+
+main seed 74582
+seed: 74582 for run 1
+Sat Oct  1 17:20:38 2016
+
+ BEGIN SNaQ for run 1, seed 74582 and hmax 1 changed starting topology by NNI move
+
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 29 (failures: 25) with -loglik=247.34508 and ht_min=[0.34526,0.26977,0.98211,10.0,10.0,0.0]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 1		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 8		 8		 0	 |	 0		 0		 --
+mvtarget	 6		 6		 0	 |	 0		 0		 --
+chdir		 4		 4		 0	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 10		 8		 0	 |	 2		 2		 --
+Total		 29		 27		 1	 |	 2		 2		 2
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 1.0		 1.0
+
+ FINISHED SNaQ for run 1, -loglik of best 247.3450811271145
+(5,#H7:0.9821120086894487::0.34526433184938654,(6,(1,(((2,4):0.2697693992612535,3):0.0)#H7:0.0::0.6547356681506135):10.0):10.0);
+---------------------
+seed: 27312 for run 2
+Sat Oct  1 17:20:41 2016
+
+ BEGIN SNaQ for run 2, seed 27312 and hmax 1 changed starting topology by NNI move
+
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 33 (failures: 25) with -loglik=300.47298 and ht_min=[0.4923,0.0,0.0,0.17322,10.0]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 4		 3		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 4		 4		 0	 |	 0		 0		 --
+mvtarget	 12		 12		 0	 |	 0		 0		 --
+chdir		 4		 4		 0	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 9		 6		 0	 |	 0		 0		 --
+Total		 33		 29		 1	 |	 0		 0		 0
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 0.0		 0.0
+
+ FINISHED SNaQ for run 2, -loglik of best 300.4729840675917
+(3,(((6,(1,(2)#H7:::0.5076950636332979):10.0):0.17321557069311283,4):0.0,5):3.1065284847446447e-6,#H7:::0.49230493636670214);
+---------------------
+
+Sat Oct  1 17:20:43 2016
+MaxNet is (5,#H7:0.9821120086894487::0.34526433184938654,(6,(1,(((2,4):0.2697693992612535,3):0.0)#H7:0.0::0.6547356681506135):10.0):10.0); 
+with -loglik 247.3450811271145
