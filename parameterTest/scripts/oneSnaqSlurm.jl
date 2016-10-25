@@ -19,7 +19,7 @@ if(isempty(ARGS))
     Runs = 2;
     Hmax = 1;
 else
-    comb = comboGenerator.comb(ARGS);
+    comb = comb(ARGS);
     XTA = eXTA[comb[1]];
     XTR = dXTR[comb[2]];
     FTA = aFTA[comb[3]];
