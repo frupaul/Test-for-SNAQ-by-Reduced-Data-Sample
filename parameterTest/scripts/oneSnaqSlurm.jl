@@ -1,3 +1,5 @@
+unshift!(Base.LOAD_CACHE_PATH, joinpath(Base.LOAD_CACHE_PATH[1], gethostname()))
+
 using PhyloNetworks;
 include("comboGenerator.jl");
 

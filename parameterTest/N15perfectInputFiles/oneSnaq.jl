@@ -7,7 +7,6 @@
 using PhyloNetworks;
 
 tableCF = readTableCF("tableCF.txt");
-startingTree = readTopology("bestStartingTree.tre");
 
 if(isempty(ARGS))
     XTA = 0.000001;
@@ -29,8 +28,17 @@ end
 
 LTA = FTA*Ratio;
 
-Filename =  string("nf",NF,"xta",XTA,"xtr",XTR,"fta",FTA,"ftr",FTR,"lta",LTA,"_snaq");
-Output = snaq!(startingTree, tableCF, Nfail = NF,
+Filename =  string("nf",NF,"xta",XTA,"xtr",XTR,"fta",FTA,"ftr",FTR,"lta",LTA,"_snaq_hmax",hmax);
+Filename2 =  string("nf",NF,"xta",XTA,"xtr",XTR,"fta",FTA,"ftr",FTR,"lta",LTA,"_snaq_hmax",hmax-1);
+if(hmax == 1)
+    startingTree = readTopology("bestStartingTree.tre");
+else
+    startingTree = readTopology(string(Filename2,".out"))
+end
+
+Output = snaq!(startingTree, tableCF, hmax=hmax, Nfail = NF,
                ftolAbs = FTA, ftolRel = FTR, xtolRel = XTR,
                xtolAbs = XTA, liktolAbs = LTA,
                runs = Runs, filename = Filename);
+
+
