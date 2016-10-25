@@ -9,7 +9,7 @@ aFTA = [0.000001, 0.00001, 0.0001, 0.001, 0.01];
 cRatio = [1, 100, 10000];
 bNF = [100,75,50,25];
 
-if(isempty(ARGS))
+if(isempty(ARGS[1]))
     XTA = 0.000001;
     XTR = 0.001;
     FTA = 0.000001;
@@ -19,7 +19,7 @@ if(isempty(ARGS))
     Runs = 2;
     Hmax = 1;
 else
-    comb = comb(ARGS);
+    comb = comb(ARGS[1]);
     XTA = eXTA[comb[1]];
     XTR = dXTR[comb[2]];
     FTA = aFTA[comb[3]];
