@@ -1,7 +1,7 @@
 unshift!(Base.LOAD_CACHE_PATH, joinpath(Base.LOAD_CACHE_PATH[1], gethostname()))
-
 using PhyloNetworks;
 include("comboGenerator.jl");
+cd("$(homedir())/u/n/a/nanji/parameterTest");
 
 tableCF = readTableCF("tableCF.txt");
 Filename = "bestStartingTree.txt"; # initialize for hmax=0
