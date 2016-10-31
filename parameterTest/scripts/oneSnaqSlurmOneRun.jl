@@ -18,7 +18,7 @@ if(isempty(ARGS))
     FTR = 0.00001;
     Ratio = 1;
     NF = 100;
-    Runs = 2;
+    Runs = 1;
     Hmax = 1;
 else
     comb = comb(ARGS[1]);
@@ -28,7 +28,7 @@ else
     FTR = 0.00001;
     Ratio = cRatio[comb[4]];
     NF = bNF[comb[5]];
-    Runs = 2;
+    Runs = 1;
     Hmax = 3;
 end
 
