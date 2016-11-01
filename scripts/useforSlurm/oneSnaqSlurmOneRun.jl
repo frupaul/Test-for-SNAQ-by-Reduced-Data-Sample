@@ -19,7 +19,7 @@ if(isempty(ARGS))
     Ratio = 1;
     NF = 100;
     Runs = 1;
-    Hmax = 1;
+    Hmax = 3;
 else
     comb = comb(ARGS[1]);
     XTA = eXTA[comb[1]];
