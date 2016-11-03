@@ -15,8 +15,8 @@ else
 end
 
 
-tableCF = readTableCF("tableCF.txt");
-Filename = "bestStartingTree.tre"; # initialize for hmax=0
+tableCF = readTableCF("../../data/perfectData_n15/tableCF.txt");
+Filename = "../../data/perfectData_n15/bestStartingTree.tre"; # initialize for hmax=0
 startingTree = readTopology(Filename);
 
 srand(1)
