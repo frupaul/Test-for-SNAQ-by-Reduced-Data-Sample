@@ -4,7 +4,7 @@
 ## julia oneSnaqOneRun.jl h ID
 
 ##unshift!(Base.LOAD_CACHE_PATH, joinpath(Base.LOAD_CACHE_PATH[1], gethostname()))
-using PhyloNetworks;
+using PhyloNetworks
 
 if(isempty(ARGS))
     h = 0
