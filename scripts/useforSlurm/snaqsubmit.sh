@@ -1,4 +1,4 @@
-#!/binbash
+#!/bin/bash
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=nji3@wisc.edu
 #SBATCH --array=1-50
