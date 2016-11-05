@@ -15,12 +15,13 @@ else
 end
 
 
-tableCF = readTableCF("../../data/perfectData_n15/tableCF.txt");
-Filename = "../../data/perfectData_n15/bestStartingTree.tre"; # initialize for hmax=0
+tableCF = readTableCF("tableCF.txt");
+Filename = "bestStartingTree.tre"; # initialize for hmax=0
 startingTree = readTopology(Filename);
 
-srand(1)
-for i in 1:id
+idd = parse(Int, id) + 1;
+srand(1);
+for i in 1:idd
     s = round(Integer,floor(rand()*100000))
 end
 
