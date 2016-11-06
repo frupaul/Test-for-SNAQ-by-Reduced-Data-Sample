@@ -19,13 +19,15 @@ tableCF = readTableCF("tableCF.txt");
 Filename = "bestStartingTree.tre"; # initialize for hmax=0
 startingTree = readTopology(Filename);
 
+h = parse(Int, h);
 idd = parse(Int, id) + 1;
-srand(1);
+srand(1); ##set seed
+s = 1; ##define s first
 for i in 1:idd
     s = round(Integer,floor(rand()*100000))
 end
 
 rootname =  string("snaq_h",h,"_id_",id)
-Filename = string(rootname, ".out")
-##Output = snaq!(startingTree, tableCF, hmax = h, runs = 1, filename = rootname);
-println(rootname)
+##Filename = string(rootname, ".out")
+Output = snaq!(startingTree, tableCF, hmax = h, runs = 1, seed = s, filename = rootname);
+##println(rootname)
