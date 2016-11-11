@@ -47,9 +47,8 @@ So, the preliminary 50 runs with default parameters are run with `scripts/useFor
 Slurm will then parallelize all the 50 runs.
 
 Then, we can use the script `scrips/useforSlurm/findBestModel.jl` to find the best topology among all the `.out` files for all
-the 50 runs. Let's write these topologies into files: `best0.tre, best1.tre, best2.tre`.
+the 50 runs. Let's write these topologies into files: `h1bestStartingTree.tre, h2bestStartingTree.tre, h3bestStartingTree.tre`.
 
-Now, we need to create a julia script that will use `best2.tre` as starting topology and run snaq for `h=3`, (*ask Cecile*
-whether we want to run the intermediate cases `h=0,1,2`), and 50 runs (*check here with Nan* and preliminary runs timing).
-We will also use slurm to parallelize all 240 scenarios (slurm has 288 cores, if we add one more element to `ftolAbs`, we
-would have exactly 288 scenarios, but do we want to use all cores for a whole week?).
+Now, we need to create a julia script that will use `h3bestStartingTree.tre` as starting topology and run snaq for `h=3`: `oneSnaqH.jl` that takes 3 arguments: `h,runs,job_array`.
+According to preliminary runs, one runs takes roughly 7 hours, so we will start with 30 runs first that will roughly take 9 days.
+We will use slurm to parallelize all 240 scenarios (slurm has 288 cores).
