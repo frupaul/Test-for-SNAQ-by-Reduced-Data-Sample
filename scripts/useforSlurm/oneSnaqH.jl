@@ -22,13 +22,13 @@ else
     h = parse(Int, ARGS[1]);
     Runs = parse(Int, ARGS[2]);
     id = parse(Int, ARGS[3]);
-    comb = comb(id);
-    XTA = eXTA[comb[1]];
-    XTR = dXTR[comb[2]];
-    FTA = aFTA[comb[3]];
+    cob = comb(id);
+    XTA = eXTA[cob[1]];
+    XTR = dXTR[cob[2]];
+    FTA = aFTA[cob[3]];
     FTR = 0.00001;
-    Ratio = cRatio[comb[4]];
-    NF = bNF[comb[5]];
+    Ratio = cRatio[cob[4]];
+    NF = bNF[cob[5]];
 end
 
     tableCF = readTableCF("tableCF.txt");
@@ -37,7 +37,7 @@ end
 
     LTA = FTA*Ratio;
 
-    idd = parse(Int, id) + 1;
+    idd = id + 1;
     srand(h+1);
     s = 1;
     for i in 1:idd
