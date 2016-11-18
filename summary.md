@@ -42,9 +42,9 @@ We need to be careful because we want to start all jobs in the same tree and net
 
 ### Perfect Data
 
-So, the preliminary 50 runs with default parameters are run with `scripts/useForSlurm/snaqsubmit.sh`, that calls
+So, the preliminary 30 runs with default parameters are run with `scripts/useForSlurm/snaqsubmit.sh`, that calls
 `oneSnaqOneRun.jl` that takes two input arguments: `h` and `$SLURM_ARRAY_TASK_ID` that will represent the run.
-Slurm will then parallelize all the 50 runs.
+Slurm will then parallelize all the runs.
 
 Then, we can use the script `scrips/useforSlurm/findBestModel.jl` to find the best topology among all the `.out` files for all
 the 50 runs. Let's write these topologies into files: `h1bestStartingTree.tre, h2bestStartingTree.tre, h3bestStartingTree.tre`.
