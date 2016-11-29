@@ -42,7 +42,7 @@ We need to be careful because we want to start all jobs in the same tree and net
 
 ### Perfect Data
 
-So, the preliminary 30 runs with default parameters are run with `scripts/useForSlurm/snaqsubmit.sh`, that calls
+So, the preliminary 30 runs with default parameters are run with `scripts/useForSlurm/oneSnaqOneRun_snaqsubmit.sh`, that calls
 `oneSnaqOneRun.jl` that takes two input arguments: `h` and `$SLURM_ARRAY_TASK_ID` that will represent the run.
 Slurm will then parallelize all the runs.
 
@@ -51,4 +51,6 @@ the 50 runs. Let's write these topologies into files: `h1bestStartingTree.tre, h
 
 Now, we need to create a julia script that will use `h3bestStartingTree.tre` as starting topology and run snaq for `h=3`: `oneSnaqH.jl` that takes 3 arguments: `h,runs,job_array`.
 According to preliminary runs, one runs takes roughly 7 hours, so we will start with 30 runs first that will roughly take 9 days.
-We will use slurm to parallelize all 240 scenarios (slurm has 288 cores).
+We will use slurm to parallelize all 240 scenarios (slurm has 288 cores). The SLURM script is `oneSnaqH_snaqsubmit.sh`.
+
+Now, Nan is working on functions to summarize the results after the runs are finished. Code will be inspired by scripts [here](https://github.com/zhou325/stat679work/tree/master/hw1)
