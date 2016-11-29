@@ -3,28 +3,23 @@
 ## hmax
 ## julia oneSnaqOneRun.jl h ID
 
-##unshift!(Base.LOAD_CACHE_PATH, joinpath(Base.LOAD_CACHE_PATH[1], gethostname()))
-using PhyloNetworks
-
-if(isempty(ARGS))
+if(length(ARGS)<2)
     h = 0
     id = 1
 else
-    h = ARGS[1]
-    id = ARGS[2]
+    h = parse(Int, ARGS[1]);
+    id = parse(Int, ARGS[2]);
 end
 
+using PhyloNetworks # the package contains the function snaq!
 
 tableCF = readTableCF("tableCF.txt");
-Filename = "bestStartingTree.tre"; # initialize for hmax=0
+Filename = string("h",h+1,"BestStartingTree.out") # initialize for hmax=0
 startingTree = readTopology(Filename);
 
-h = parse(Int, h);
-idd = parse(Int, id) + 1;
-srand(1); ##set seed
-s = 1; ##define s first
-for i in 1:idd
-    s = round(Integer,floor(rand()*100000))
+srand(h+10); ##set seed
+for i in 0:id
+    global s = round(Integer,floor(rand()*100000)) # seed will be used in the snaq! function
 end
 
 rootname =  string("snaq_h",h,"_id_",id)

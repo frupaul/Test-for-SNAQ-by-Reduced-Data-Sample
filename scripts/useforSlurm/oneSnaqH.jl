@@ -3,7 +3,7 @@
 # - a number of total runs
 # - a integer representing the ID number of one specific combination of parameters for each slurm task
 
-# Read the 3 input parameter for this Julia script.
+# Read the 3 input parameters for this Julia script.
 # If the user did not input all three parameters,
 # The hybridization number will be default to be 0,
 # number of runs will defaultly be set as 1,
