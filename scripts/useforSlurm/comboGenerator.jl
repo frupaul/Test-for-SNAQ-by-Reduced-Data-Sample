@@ -17,3 +17,13 @@ function comb(input)
     comb = [e+1,d+1,a+1,c+1,b+1];
     return comb
 end
+
+# for i in 0:239
+#     for j in 0:239
+#         if i != j
+#             if comb(i) == comb(j)
+#                 println(comb(i) == comb(j))
+#             end
+#         end
+#     end
+# end
