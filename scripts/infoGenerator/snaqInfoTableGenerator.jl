@@ -19,10 +19,8 @@ fileNames = filter(x->contains(x,".log"),readdir(pwd())); # Read only the names 
 # difference which is the consuming time for one run.
 
 function eachRunTimeSummary(x,y)
-    dat1 = DateTime(x, "e d u y H:M:S") - (
-               contains(x, "AM") ? Hour(12) : Hour(0));
-    dat2 = DateTime(y, "e d u y H:M:S") - (
-               contains(y, "AM") ? Hour(12) : Hour(0));
+    dat1 = DateTime(x, "y-u-d H:M:S");
+    dat2 = DateTime(y, "y-u-d H:M:S");
     Diff = Float64(dat2 - dat1)/1000;
     return Diff
 end
