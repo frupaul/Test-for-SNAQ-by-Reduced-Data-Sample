@@ -19,10 +19,43 @@ fileNames = filter(x->contains(x,".log"),readdir(pwd())); # Read only the names 
 # difference which is the consuming time for one run.
 
 function eachRunTimeSummary(x,y)
+
+    # for the latest PhyloNetworks, the time is in y-u-d H:M:S form.
+
     dat1 = DateTime(x, "y-u-d H:M:S");
     dat2 = DateTime(y, "y-u-d H:M:S");
     Diff = Float64(dat2 - dat1)/1000;
     return Diff
+
+    # for the version that print time with AM and PM
+
+#    if contains(x, "PM")
+#        x = split(x);
+#        loc = find(x -> x=="PM",x);
+#        time = split(x[loc-1],":");
+#        if time[1] != "12"
+#            time[1] == "$(parse(Int, time[1])+12)";
+#        end
+#        x[loc-1] = string(time[1],":",time[2],":",time[3]);
+#        x = join(x, " ");
+#    end
+
+#    if contains(y, "PM")
+#        y = split(y);
+#        loc = find(x -> x=="PM",y);
+#        time = split(y[loc-1],":");
+#        if time[1] != "12"
+#            time[1] == "$(parse(Int, time[1])+12)";
+#        end
+#        y[loc-1] = string(time[1],":",time[2],":",time[3]);
+#        y = join(y, " ");
+#    end
+#
+#    dat1 = DateTime(x, "e d u y H:M:S");
+#    dat2 = DateTime(y, "e d u y H:M:S");
+#    Diff = Int(dat2 - dat1)/(60*1000);
+#    return Diff
+
 end
 
 # Initialize the arrayList to save all the information we want for each run.
