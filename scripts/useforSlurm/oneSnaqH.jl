@@ -25,27 +25,37 @@ using PhyloNetworks; # package contains the function snaq!
 eXTA = [0.000001, 0.001];
 dXTR = [0.001, 0.01];
 aFTA = [0.000001, 0.00001, 0.0001, 0.001, 0.01];
-cRatio = [1, 100, 10000];
+cRatio = [1, 100, 10000];  # controld LTA: Ratio=LTA/FTA
 bNF = [100,75,50,25];
+
 # 5 parameters, with 5*4*3*2*2 = 240 combinations in total
+nparams = 5
+nlevels = [length(lFTA),length(lNF),length(lRatio),length(lXTR),length(lXTA)]
 
 FTR = 0.00001; # the parameter set to be a fixed value
 
-# Include a julia script from outside containing one function comb() inside.
-# The function comb(ID number of a specific parameter combination).
-# This function takes a integer as input and returns a array of the parameter values.
-# The integer input should be between 0 and 239.
-# Index 0 is the first values of all parameters,
-# Index 239 is the last values of all parameters.
+"""
+comb(index of parameter combination)
 
-include("comboGenerator.jl");
+Take an integer as input, return a tuple of parameter values.
+External objects are used: nparams, nlevels, and lFTA etc.
+The integer input should be between 0 and 239, or
+between 0 and the total # combinations -1 in general.
+index 0 -> first values of all parameters
+index 239 -> last values of all parameters
+"""
+function comb(combID)
+  paramID = Vector{Int}(nparams)
+  d = combID
+  for par in 1:nparams
+    d,r = fldmod(d, nlevels[par]) # combid = d * nlevels + r
+    paramID[par] = r+1 # indexing in parameter list starts at 1, not 0
+  end
+  println("parameter levels: ",paramID)
+  return lFTA[paramID[1]], lNF[paramID[2]], lRatio[paramID[3]], lXTR[paramID[4]], lXTA[paramID[5]]
+end
 
-cob = comb(id); #read the array of specific combination of parameters
-XTA = eXTA[cob[1]];
-XTR = dXTR[cob[2]];
-FTA = aFTA[cob[3]];
-Ratio = cRatio[cob[4]];
-NF = bNF[cob[5]];
+FTA, NF, Ratio, XTR, XTA = comb(id)
 LTA = FTA*Ratio;
 
     tableCF = readTableCF("tableCF.txt"); # read the input CFtable file
@@ -62,8 +72,23 @@ LTA = FTA*Ratio;
     # set the name of the out file of snaq!
     # this name includes all the information of the input parameters for snaq!
     rootname =  string("slurm_hmax",h,"nf",NF,"xta",XTA,"xtr",XTR,"fta",FTA,"ftr",FTR,"lta",LTA,"_snaq");
-    Output = snaq!(startingTree, tableCF, hmax = h, Nfail = NF,
+
+    # To find if the combination of the parameters has already be done,
+    # so that user could prevent the repeat running.
+
+    fileNames = filter(x->contains(x,".log"),readdir(pwd()));
+    rootnameLog = string(rootname,".log");
+    existOrNot = length(find(x -> x==rootnameLog, fileNames));
+
+    if existOrNot < 1
+
+        Output = snaq!(startingTree, tableCF, hmax = h, Nfail = NF,
                    ftolAbs = FTA, ftolRel = FTR, xtolRel = XTR,
                    xtolAbs = XTA, liktolAbs = LTA,
                    runs = Runs, seed = s, filename = rootname);
+    else
+
+        print(rootname," Combination exists.");
+
+    end
 
