@@ -1,12 +1,12 @@
 #Pkg.add("PhyloNetworks");
 #Pkg.add("DataFrames");
-#Pkg.add("Dates")
 #Pkg.update();
 
-if length(ARGS) != 1
-  error("need 1 parameter: the address of the directory")
+if length(ARGS) != 2
+  error("need 2 parameter: the address of the directory and the root at node for the topology")
 end
 directory = ARGS[1]; # read the directory
+rootAtNode = ARGS[2]; # read the root at the node
 
 # Set the current working directory to be user's input address
 
@@ -17,8 +17,6 @@ fileNames = filter(x->contains(x,".log"),readdir(pwd())); # Read only the names 
 
 # The function is used to read the starting time of two runs and return the
 # difference which is the consuming time for one run.
-
-using Dates;
 
 function eachRunTimeSummary(x,y)
     dat1 = DateTime(x, "e d u y H:M:S") - (
@@ -115,6 +113,7 @@ liktolAbs = Array{Float64}(run);
 
 seed = runSeed[1];
 sameToBestTopology = Array{Int}(run);
+topo = runTopology[1];
 loglik = runLoglik[1];
 runTime = runTimeList[1];
 
@@ -141,12 +140,27 @@ for i in 2:length(fileNames)
     seed = [seed;runSeed[i]];
     loglik = [loglik;runLoglik[i]];
     runTime = [runTime;runTimeList[i]];
+    topo = [topo;runTopology[i]];
 
 end
 
 # Generate the DataFrame and write it into a csv file.
 
-df = DataFrame(hmax=Hmax,nfail=Nfail,ftolRel=ftolRel,ftolAbs=ftolAbs,xtolAbs=xtolAbs,xtolRel=xtolRel,liktolAbs=liktolAbs,seed=seed,loglik=loglik,runTime=runTime);
+trueNet = readToplogy("trueNet.out"); # read the true topology
+
+# The loop will save 1 when the result topology is the same to the true topology,
+# otherwise it will save 0.
+
+for i in 1:length(sameToBestTopology)
+
+    rootatnode!(topo[i],rootAtNode);
+    dist = hardwiredClusterDistance(trueNet, topo[i], true);
+    sameToBestTopology = (dist == 0) ? 1:0;
+
+end
+
+df = DataFrame(Hmax=Hmax,Nfail=Nfail,FtolRel=ftolRel,FtolAbs=ftolAbs,XtolAbs=xtolAbs,
+               XtolRel=xtolRel,LiktolAbs=liktolAbs,Seed=seed,SameToBestTopology=sameToBestTopology,Loglik=loglik,RunTime=runTime);
 writetable("output.csv",df)
 
 
