@@ -188,7 +188,7 @@ for i in 1:length(sameToBestTopology)
 
     rootatnode!(topo[i],rootAtNode);
     dist = hardwiredClusterDistance(trueNet, topo[i], true);
-    sameToBestTopology = (dist == 0) ? 1:0;
+    sameToBestTopology[i] = (dist == 0) ? 1:0;
 
 end
 
