@@ -139,6 +139,7 @@ ftolAbs = Array{Float64}(run);
 xtolAbs = Array{Float64}(run);
 xtolRel = Array{Float64}(run);
 liktolAbs = Array{Float64}(run);
+combineName = Array{String}(run);
 
 # Initialize the array so that it could be easy to combine in for loop.
 
@@ -160,6 +161,7 @@ for i in 1:length(parameterInfoList)
         xtolAbs[(i-1)*j+j] = parse(Float64, parameterInfoList[i][4]);
         xtolRel[(i-1)*j+j] = parse(Float64, parameterInfoList[i][5]);
         liktolAbs[(i-1)*j+j] = parse(Float64, parameterInfoList[i][7]);
+        combineName[(i-1)*j+j] = string(Hmax[(i-1)*j+j],Nfail[(i-1)*j+j],ftolRel[(i-1)*j+j],ftolAbs[(i-1)*j+j],xtolAbs[(i-1)*j+j],xtolRel[(i-1)*j+j],liktolAbs[(i-1)*j+j]);
 
     end
 end
@@ -190,7 +192,7 @@ for i in 1:length(sameToBestTopology)
 
 end
 
-df = DataFrame(Hmax=Hmax,Nfail=Nfail,FtolRel=ftolRel,FtolAbs=ftolAbs,XtolAbs=xtolAbs,
+df = DataFrame(comboName=combineName,Hmax=Hmax,Nfail=Nfail,FtolRel=ftolRel,FtolAbs=ftolAbs,XtolAbs=xtolAbs,
                XtolRel=xtolRel,LiktolAbs=liktolAbs,Seed=seed,SameToBestTopology=sameToBestTopology,Loglik=loglik,RunTime=runTime);
 writetable("output.csv",df)
 
