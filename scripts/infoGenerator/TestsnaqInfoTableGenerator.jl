@@ -2,11 +2,11 @@
 #Pkg.add("DataFrames");
 #Pkg.update();
 
-if length(ARGS) != 2
-  error("need 2 parameter: the address of the directory and the root at node for the topology")
-end
+#if length(ARGS) != 2
+#  error("need 2 parameter: the address of the directory and the root at node for the topology")
+#end
 directory = ARGS[1]; # read the directory
-rootAtNode = ARGS[2]; # read the root at the node
+#rootAtNode = ARGS[2]; # read the root at the node
 
 # Set the current working directory to be user's input address
 
@@ -18,14 +18,14 @@ fileNames = filter(x->contains(x,".log"),readdir(pwd())); # Read only the names 
 # The function is used to read the starting time of two runs and return the
 # difference which is the consuming time for one run.
 
-function eachRunTimeSummary(x,y)
+#function eachRunTimeSummary(x,y)
 
     # for the latest PhyloNetworks, the time is in y-u-d H:M:S form.
 
-    dat1 = DateTime(x, "y-u-d H:M:S");
-    dat2 = DateTime(y, "y-u-d H:M:S");
-    Diff = Float64(dat2 - dat1)/1000;
-    return Diff
+#    dat1 = DateTime(x, "y-u-d H:M:S");
+#    dat2 = DateTime(y, "y-u-d H:M:S");
+#    Diff = Float64(dat2 - dat1)/1000;
+#    return Diff
 
     # for the version that print time with AM and PM
 
@@ -56,10 +56,11 @@ function eachRunTimeSummary(x,y)
 #    Diff = Int(dat2 - dat1)/(60*1000);
 #    return Diff
 
-end
+#end
 
 # Initialize the arrayList to save all the information we want for each run.
 
+parameterInfo = Array{String}(8); # The array to save eight parameters: hmax, ftolRel, ftolAbs, xtoLAbs, xtolRel, Nfails, likotolAbs and runs
 parameterInfoList = Array{String}[]; # The arrayList to save the parameter array for each file
 runSeed = Array{String}[]; # The arrayList used to store seed for each run
 runLoglik = Array{String}[]; # The arrayList used to store loglikValue for each run
@@ -73,8 +74,6 @@ for i in fileNames[1:end]
 
     # Import bash command grep and sed to help search and grab the information we want.
 
-    parameterInfo = Array{String}(8); # The array to save eight parameters: hmax, ftolRel, ftolAbs, xtoLAbs, xtolRel, Nfails, likotolAbs and runs
-
     parameterInfo[1] = readstring(pipeline(`grep "hmax =" $i`, `grep -Eo "\d+"`)); # Find hmax
     parameterInfo[2] = readstring(pipeline(`grep -Eo "ftolRel=.*" $i`, `sed -E 's/ftolRel=(.*), fto.*/\1/'`)); # Find ftolRel
     parameterInfo[3] = readstring(pipeline(`grep -Eo "ftolAbs=.*" $i`, `sed -E 's/ftolAbs=(.*),/\1/'`)); # Find ftolAbs
@@ -84,7 +83,9 @@ for i in fileNames[1:end]
     parameterInfo[7] = readstring(pipeline(`grep -Eo "liktolAbs =.*" $i`, `sed -E 's/liktolAbs = (.*)\./\1/'`)); # Find liktolAbs
     parameterInfo[8] = readstring(pipeline(`grep -Eo "BEGIN: .*" $i`, `sed -E 's/BEGIN: (.*) run.*/\1/'`)); # Find number of runs
 
-    push!(parameterInfoList,parameterInfo); # Save the parameter array of one file into the arrayList
+    push!(parameterInfoList,[parameterInfo[1],parameterInfo[2],parameterInfo[3],
+                             parameterInfo[4],parameterInfo[5],parameterInfo[6],
+                             parameterInfo[7],parameterInfo[8]]); # Save the parameter array of one file into the arrayList
 
     run = run + parse(Int,parameterInfo[8]);
 
@@ -111,22 +112,22 @@ for i in fileNames[1:end]
 
     # Save the info of time in each run.
 
-    runTime = Array{String}(parse(Int, parameterInfo[8])+1);
-    runTimeLine = split(readstring(`grep -A 1 "seed:.*" $i`), "\n")
-    for k in 1:parse(Int, parameterInfo[8])
-        runTime[k] = runTimeLine[3*k-1];
-    end
-    endTimeLine = split(readstring(`grep -B 1 "MaxNet is.*" $i`),"\n");
-    runTime[end] = endTimeLine[1];
+#    runTime = Array{String}(parse(Int, parameterInfo[8])+1);
+#    runTimeLine = split(readstring(`grep -A 1 "seed:.*" $i`), "\n")
+#    for k in 1:parse(Int, parameterInfo[8])
+#        runTime[k] = runTimeLine[3*k-1];
+#    end
+#    endTimeLine = split(readstring(`grep -B 1 "MaxNet is.*" $i`),"\n");
+#    runTime[end] = endTimeLine[1];
 
     # Count the time used for each run.
 
-    runTimeNum = Array{Float64}(parse(Int, parameterInfo[8]));
-    for j in length(runTimeNum)
-        runTimeNum[j] = eachRunTimeSummary(runTime[j],runTime[j+1]);
-    end
+#    runTimeNum = Array{Float64}(parse(Int, parameterInfo[8]));
+#    for j in length(runTimeNum)
+#        runTimeNum[j] = eachRunTimeSummary(runTime[j],runTime[j+1]);
+#    end
 
-    push!(runTimeList,runTimeNum); # Save the time info of runs in each file
+#    push!(runTimeList,runTimeNum); # Save the time info of runs in each file
 
 end
 
@@ -151,7 +152,7 @@ seed = runSeed[1];
 sameToBestTopology = Array{Int}(run);
 topo = runTopology[1];
 loglik = runLoglik[1];
-runTime = runTimeList[1];
+#runTime = runTimeList[1];
 
 # Repetitively set the parameters for each run.
 
@@ -178,28 +179,31 @@ for i in 2:length(fileNames)
 
     seed = [seed;runSeed[i]];
     loglik = [loglik;runLoglik[i]];
-    runTime = [runTime;runTimeList[i]];
+#    runTime = [runTime;runTimeList[i]];
     topo = [topo;runTopology[i]];
 
 end
 
 # Generate the DataFrame and write it into a csv file.
 
-trueNet = readToplogy("trueNet.out"); # read the true topology
+#trueNet = readToplogy("trueNet.out"); # read the true topology
 
 # The loop will save 1 when the result topology is the same to the true topology,
 # otherwise it will save 0.
 
-for i in 1:length(sameToBestTopology)
+#for i in 1:length(sameToBestTopology)
+#
+#    rootatnode!(topo[i],rootAtNode);
+#    dist = hardwiredClusterDistance(trueNet, topo[i], true);
+#    sameToBestTopology[i] = (dist == 0) ? 1:0;
 
-    rootatnode!(topo[i],rootAtNode);
-    dist = hardwiredClusterDistance(trueNet, topo[i], true);
-    sameToBestTopology[i] = (dist == 0) ? 1:0;
+#end
 
-end
+# SameToBestTopology=sameToBestTopology,
+# ,RunTime=runTime
 
 df = DataFrame(comboName=combineName,Hmax=Hmax,Nfail=Nfail,FtolRel=ftolRel,FtolAbs=ftolAbs,XtolAbs=xtolAbs,
-               XtolRel=xtolRel,LiktolAbs=liktolAbs,Seed=seed,SameToBestTopology=sameToBestTopology,Loglik=loglik,RunTime=runTime);
+               XtolRel=xtolRel,LiktolAbs=liktolAbs,Seed=seed,Loglik=loglik);
 writetable("output.csv",df)
 
 
