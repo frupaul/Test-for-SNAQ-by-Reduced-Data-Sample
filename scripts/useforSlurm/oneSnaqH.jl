@@ -22,11 +22,11 @@ end
 using PhyloNetworks; # package contains the function snaq!
 
 # lists of all possible varied values for each parameter:
-eXTA = [0.000001, 0.001];
-dXTR = [0.001, 0.01];
-aFTA = [0.000001, 0.00001, 0.0001, 0.001, 0.01];
-cRatio = [1, 100, 10000];  # controld LTA: Ratio=LTA/FTA
-bNF = [100,75,50,25];
+lXTA = [0.000001, 0.001];
+lXTR = [0.001, 0.01];
+lFTA = [0.000001, 0.00001, 0.0001, 0.001, 0.01];
+lRatio = [1, 100, 10000];  # controld LTA: Ratio=LTA/FTA
+lNF = [100,75,50,25];
 
 # 5 parameters, with 5*4*3*2*2 = 240 combinations in total
 nparams = 5
@@ -76,19 +76,17 @@ LTA = FTA*Ratio;
     # To find if the combination of the parameters has already be done,
     # so that user could prevent the repeat running.
 
-    fileNames = filter(x->contains(x,".log"),readdir(pwd()));
     rootnameLog = string(rootname,".log");
-    existOrNot = length(find(x -> x==rootnameLog, fileNames));
 
-    if existOrNot < 1
+    if isfile(rootnameLog)
+
+        print(rootname," Combination exists.");
+
+    else
 
         Output = snaq!(startingTree, tableCF, hmax = h, Nfail = NF,
                    ftolAbs = FTA, ftolRel = FTR, xtolRel = XTR,
                    xtolAbs = XTA, liktolAbs = LTA,
                    runs = Runs, seed = s, filename = rootname);
-    else
-
-        print(rootname," Combination exists.");
-
     end
 
