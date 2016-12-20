@@ -78,7 +78,7 @@ LTA = FTA*Ratio;
 
     rootnameLog = string(rootname,".log");
 
-    if isfile(rootnameLog)
+    if isfile(rootnameLog) && filesize()>1000
 
         print(rootname," Combination exists.");
 
@@ -89,4 +89,5 @@ LTA = FTA*Ratio;
                    xtolAbs = XTA, liktolAbs = LTA,
                    runs = Runs, seed = s, filename = rootname);
     end
+
 
