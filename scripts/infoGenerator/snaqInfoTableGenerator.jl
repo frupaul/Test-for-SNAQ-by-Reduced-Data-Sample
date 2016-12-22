@@ -2,11 +2,24 @@
 #Pkg.add("DataFrames");
 #Pkg.update();
 
-if length(ARGS) != 2
-  error("need 2 parameter: the address of the directory and the root at node for the topology")
+if length(ARGS) < 3 && length(ARGS) > 0
+
+    directory = ARGS[1]; # read the directory
+
+    if length(ARGS) > 1
+
+        realTopo = ARGS[2]; # read the root at the node
+
+    end
+
+else
+
+    error("need at least 1 parameter and at most 2 parameters: the address of
+          the directory and the file name of the true topology")
+
 end
-directory = ARGS[1]; # read the directory
-rootAtNode = ARGS[2]; # read the root at the node
+
+
 
 # Set the current working directory to be user's input address
 
@@ -20,42 +33,44 @@ fileNames = filter(x->contains(x,".log"),readdir(pwd())); # Read only the names 
 
 function eachRunTimeSummary(x,y)
 
-    # for the latest PhyloNetworks, the time is in y-u-d H:M:S form.
+    if contains(x,"AM") || contains(x,"PM")
+        # for the version that print time with AM and PM
+        a = 1
+        if contains(x, "PM")
+            x = split(x);
+            loc = find(x -> x=="PM",x);
+            time = split(x[loc-1],":");
+            if time[1] != "12"
+                time[1] == "$(parse(Int, time[1])+12)";
+            end
+            x[loc-1] = string(time[1],":",time[2],":",time[3]);
+            x = join(x, " ");
+        end
+        if contains(y, "PM")
+            y = split(y);
+            loc = find(x -> x=="PM",y);
+            time = split(y[loc-1],":");
+            if time[1] != "12"
+                time[1] == "$(parse(Int, time[1])+12)";
+            end
+            y[loc-1] = string(time[1],":",time[2],":",time[3]);
+            y = join(y, " ");
+        end
+    else
+        a = 2
+    end
 
-    dat1 = DateTime(x, "y-u-d H:M:S");
-    dat2 = DateTime(y, "y-u-d H:M:S");
-    Diff = Float64(dat2 - dat1)/1000;
+    if a = 1
+        dat1 = DateTime(x, "e d u y H:M:S");
+        dat2 = DateTime(y, "e d u y H:M:S");
+        Diff = Int(dat2 - dat1)/1000;
+    else if a = 2
+        # for the latest PhyloNetworks, the time is in y-u-d H:M:S form.
+        dat1 = DateTime(x, "y-u-d H:M:S");
+        dat2 = DateTime(y, "y-u-d H:M:S");
+        Diff = Float64(dat2 - dat1)/1000;
+    end
     return Diff
-
-    # for the version that print time with AM and PM
-
-#    if contains(x, "PM")
-#        x = split(x);
-#        loc = find(x -> x=="PM",x);
-#        time = split(x[loc-1],":");
-#        if time[1] != "12"
-#            time[1] == "$(parse(Int, time[1])+12)";
-#        end
-#        x[loc-1] = string(time[1],":",time[2],":",time[3]);
-#        x = join(x, " ");
-#    end
-
-#    if contains(y, "PM")
-#        y = split(y);
-#        loc = find(x -> x=="PM",y);
-#        time = split(y[loc-1],":");
-#        if time[1] != "12"
-#            time[1] == "$(parse(Int, time[1])+12)";
-#        end
-#        y[loc-1] = string(time[1],":",time[2],":",time[3]);
-#        y = join(y, " ");
-#    end
-#
-#    dat1 = DateTime(x, "e d u y H:M:S");
-#    dat2 = DateTime(y, "e d u y H:M:S");
-#    Diff = Int(dat2 - dat1)/(60*1000);
-#    return Diff
-
 end
 
 # Initialize the arrayList to save all the information we want for each run.
@@ -183,20 +198,25 @@ for i in 2:length(fileNames)
 
 end
 
-# Generate the DataFrame and write it into a csv file.
+if length(ARGS) > 1
 
-trueNet = readToplogy("trueNet.out"); # read the true topology
+    trueNet = readToplogy(realTopo); # read the true topology
+    rootAtNode = split(split(split(string(trueNet),"\n")[5],"(")[2],",")[1]
 
-# The loop will save 1 when the result topology is the same to the true topology,
-# otherwise it will save 0.
+    # The loop will save 1 when the result topology is the same to the true topology,
+    # otherwise it will save 0.
 
-for i in 1:length(sameToBestTopology)
+    for i in 1:length(sameToBestTopology)
 
-    rootatnode!(topo[i],rootAtNode);
-    dist = hardwiredClusterDistance(trueNet, topo[i], true);
-    sameToBestTopology[i] = (dist == 0) ? 1:0;
+        rootatnode!(topo[i],rootAtNode);
+        dist = hardwiredClusterDistance(trueNet, topo[i], true);
+        sameToBestTopology[i] = (dist == 0) ? 1:0;
+
+    end
 
 end
+
+# Generate the DataFrame and write it into a csv file.
 
 df = DataFrame(comboName=combineName,Hmax=Hmax,Nfail=Nfail,FtolRel=ftolRel,FtolAbs=ftolAbs,XtolAbs=xtolAbs,
                XtolRel=xtolRel,LiktolAbs=liktolAbs,Seed=seed,SameToBestTopology=sameToBestTopology,Loglik=loglik,RunTime=runTime);
