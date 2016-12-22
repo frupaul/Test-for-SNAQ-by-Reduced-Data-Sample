@@ -71,7 +71,9 @@ LTA = FTA*Ratio;
 
     # set the name of the out file of snaq!
     # this name includes all the information of the input parameters for snaq!
-    rootname =  string("slurm_hmax",h,"nf",NF,"xta",XTA,"xtr",XTR,"fta",FTA,"ftr",FTR,"lta",LTA,"_snaq");
+
+    hostName = gethostname();
+    rootname =  string(hostName,"slurm_hmax",h,"nf",NF,"xta",XTA,"xtr",XTR,"fta",FTA,"ftr",FTR,"lta",LTA,"_snaq");
 
     # To find if the combination of the parameters has already be done,
     # so that user could prevent the repeat running.
