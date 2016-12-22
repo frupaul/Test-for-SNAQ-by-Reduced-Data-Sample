@@ -73,8 +73,8 @@ LTA = FTA*Ratio;
     # set the name of the out file of snaq!
     # this name includes all the information of the input parameters for snaq!
 
-    rootname = string(dataset,“_snaq_hmax",h,"nf",NF,"xta",
-                      XTA,"xtr",XTR,"fta",FTA,"ftr",FTR,"lta",LTA,"_",gethostname();
+    rootname = string(dataset,"_snaq_hmax",h,"nf",NF,"xta",
+                      XTA,"xtr",XTR,"fta",FTA,"ftr",FTR,"lta",LTA,"_",gethostname());
 
     Filename = string("h",h,"BestStartingTree.out"); # the name of starting tree model selected by findBestModel.jl
     startingTree = readTopology(Filename); # read the starting tree model
