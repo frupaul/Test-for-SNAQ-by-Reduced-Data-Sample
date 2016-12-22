@@ -58,22 +58,34 @@ end
 FTA, NF, Ratio, XTR, XTA = comb(id)
 LTA = FTA*Ratio;
 
-    tableCF = readTableCF("tableCF.txt"); # read the input CFtable file
-    Filename = string("h",h,"BestStartingTree.out"); # the name of starting tree model selected by findBestModel.jl
-    startingTree = readTopology(Filename); # read the starting tree model
+    dataset = “perfect” # this can be changed later to “estimated300genes"
 
-    # Set the seed to generate random numbers to make all the results reproducible,
-    # or to restart the process if some fail.
-    srand(h+1);
-    for i in 0:id
-      global s = round(Integer,floor(rand()*100000)); # seed will be used in the snaq! function
+    if dataset == "perfect"
+
+        tableCF = readTableCF("table.CF");# read the input CFtable file
+
+    elseif dataset == "estimated300genes"
+
+        tableCF = readTableCF("1_seqgen.CFs.csv");
+
     end
 
     # set the name of the out file of snaq!
     # this name includes all the information of the input parameters for snaq!
 
-    hostName = gethostname();
-    rootname =  string(hostName,"slurm_hmax",h,"nf",NF,"xta",XTA,"xtr",XTR,"fta",FTA,"ftr",FTR,"lta",LTA,"_snaq");
+    rootname = string(dataset,“_snaq_hmax",h,"nf",NF,"xta",
+                      XTA,"xtr",XTR,"fta",FTA,"ftr",FTR,"lta",LTA,"_",gethostname();
+
+    Filename = string("h",h,"BestStartingTree.out"); # the name of starting tree model selected by findBestModel.jl
+    startingTree = readTopology(Filename); # read the starting tree model
+
+    # Set the seed to generate random numbers to make all the results reproducible,
+    # or to restart the process if some fail.
+
+    srand(h+1);
+    for i in 0:id
+      global s = round(Integer,floor(rand()*100000)); # seed will be used in the snaq! function
+    end
 
     # To find if the combination of the parameters has already be done,
     # so that user could prevent the repeat running.
