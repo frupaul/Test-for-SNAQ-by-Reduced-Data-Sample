@@ -62,7 +62,7 @@ LTA = FTA*Ratio;
 
     if dataset == "perfect"
 
-        tableCF = readTableCF("table.CF");# read the input CFtable file
+        tableCF = readTableCF("tableCF.txt");# read the input CFtable file
 
     elseif dataset == "estimated300genes"
 
