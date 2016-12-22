@@ -58,7 +58,7 @@ end
 FTA, NF, Ratio, XTR, XTA = comb(id)
 LTA = FTA*Ratio;
 
-    dataset = “perfect” # this can be changed later to “estimated300genes"
+    dataset = "perfect" # this can be changed later to “estimated300genes"
 
     if dataset == "perfect"
 
