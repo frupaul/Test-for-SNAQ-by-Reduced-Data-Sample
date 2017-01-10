@@ -119,3 +119,7 @@ done
 8. Possibly run all combinations again, if there is time before the end of the break,
 but for the data from estimated trees on 300 genes. It looks like these [data](https://github.com/frupaul/Test-for-SNAQ-by-Reduced-Data-Sample/blob/master/data/est300GeneTrees_n15/1_seqgen.CFs.csv)
 The same starting networks could be used as for the perfect data, I think.
+
+One thing from Nan's email:
+Here is a thing. Actually in Slurm, Mike has set a limit for the access of the cores each person can use and it is 48. And for specific jobs, they may not access all the processors (1 cpu with 2 processors and it will work as two cores we need), so jobs may only access 24 cores. Before the winter break, professor and I modified the code and hope them run well in Darwin02-06 because in Darwin02-06, the speeds are the same. However, Mike told me that it would be so hard to split the specific nodes to run the full access of 48 cores. Mike and I talked about it for a while and he said he would try to find way to open the unlimited access for me in Darwin. However, it will still be very hard to specify the nodes and Mike said I should just let Slurm to choose the nodes to prevent any problems.
+So now based on the 60 results we've already had, I decided to still run jobs in Marzano (in partition long) first. So that at least I'm not wasting the time and still could have some results. Though it may take more time, during this time, I will still talk with Mike to see if there will be a better way.
