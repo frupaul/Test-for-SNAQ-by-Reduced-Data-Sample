@@ -60,9 +60,11 @@ Summary functions are in the folder `scripts/infoGenerator/`.
 The functions used to run the perfect data are `oneSnaqH_perfectDatasubmit.sh` which calls `oneSnaqH.jl`. All runs are in `marzano` which have comparable running times.
 We did not run in `darwin` machines, because we cannot control using only `darwin02-06`, and not all `darwin` machines have comparable speed (only 02-06).
 
-`Slurm` has a limit of 48 nodes per user (24 if using R or julia). Mike C. has mentioned that he can remove this restriction for future analyses so that Nan can use 96 nodes. Mike C. also has plans to create a specific partition for `darwin02-06`.
+`Slurm` has a limit of 48 nodes per user (24 if using R or julia). Mike C. has mentioned that he can remove this restriction for future analyses so that Nan can use 96 nodes. Mike C. also has plans to create a specific partition for `darwin02-06`. Mike C. did this already, and `#SBATCH -p darwin` uses only `darwin02-06`.
 
 Action items:
+
+2. Wait for the remaining runs for perfect data (should be finished within a week).
 
 1. Write a shell script to rename all log and out file from the 60 prior runs: add “marzano” to these file names. Also perhaps add “perfect” to refer to the input data for these runs.
 
@@ -77,7 +79,5 @@ mv hw1-snaqTimeTests/out/timetest${i}_snaq.out hw1-snaqTimeTests/out/timetest0${
 done
 ```
 
-2. Wait for the remaining runs for perfect data (should be finished within a week).
-
 3. Run all combinations for the data from estimated trees on 300 genes. It looks like these [data](https://github.com/frupaul/Test-for-SNAQ-by-Reduced-Data-Sample/blob/master/data/est300GeneTrees_n15/1_seqgen.CFs.csv)
-The same starting networks could be used as for the perfect data. These runs will use also `marzano`, instead of waiting for Mike to have the new partition for `darwin02-06`.
+The same starting networks could be used as for the perfect data. These runs will use `darwin02-06`. Make the names of scripts match the dataset.
