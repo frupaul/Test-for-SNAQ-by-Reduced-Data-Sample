@@ -64,6 +64,8 @@ We did not run in `darwin` machines, because we cannot control using only `darwi
 
 Action items:
 
+1. Clean up scripts, and make sure that we have on github the scripts run for perfect data. Also, create a README file with information on the scripts to summarize the output files (in julia and R).
+
 2. Wait for the remaining runs for perfect data (should be finished within a week).
 
 1. Write a shell script to rename all log and out file from the 60 prior runs: add “marzano” to these file names. Also perhaps add “perfect” to refer to the input data for these runs.
