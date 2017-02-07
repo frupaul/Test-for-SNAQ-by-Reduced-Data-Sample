@@ -1,6 +1,5 @@
 #!/bin/bash
 #SBATCH -o perfect_darwin_%a.out
-#SBATCH --nodelist=darwin0[2-6]
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=nji3@wisc.edu
 #SBATCH --array=0-239
