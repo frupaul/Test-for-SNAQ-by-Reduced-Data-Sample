@@ -1,22 +1,26 @@
-# Julia script to run SNaQ! on a test data set with 3 input parameters:
+# Julia script to run SNaQ! on a test data set with 4 input parameters:
+# The name of the partition jobs sent to
 # - a number of hybridizations
 # - a number of total runs
 # - a integer representing the ID number of one specific combination of parameters for each slurm task
 
-# Read the 3 input parameters for this Julia script.
+# Read the 4 input parameters for this Julia script.
 # If the user did not input all three parameters,
-# The hybridization number will be default to be 0,
+# The name of the partition will be default to be long,
+# the hybridization number will be default to be 0,
 # number of runs will defaultly be set as 1,
 # and the id number will be 0.
 
 if(length(ARGS)<3)
+    partition = "long";
     h = 0;
     Runs = 1;
     id = 0;
 else
-    h = parse(Int, ARGS[1]);
-    Runs = parse(Int, ARGS[2]);
-    id = parse(Int, ARGS[3]);
+    partition = ARGS[1];
+    h = parse(Int, ARGS[2]);
+    Runs = parse(Int, ARGS[3]);
+    id = parse(Int, ARGS[4]);
 end
 
 using PhyloNetworks; # package contains the function snaq!
@@ -58,14 +62,16 @@ end
 FTA, NF, Ratio, XTR, XTA = comb(id)
 LTA = FTA*Ratio;
 
-    dataset = "perfect" # this can be changed later to “estimated300genes"
+    if partition == "long"
 
-    if dataset == "perfect"
-
+        dataset = "perfect";
+        scalar = 1;
         tableCF = readTableCF("tableCF.txt");# read the input CFtable file
 
-    elseif dataset == "estimated300genes"
+    elseif partition == "darwin"
 
+        dataset = "est300";
+        scalar = 2;
         tableCF = readTableCF("1_seqgen.CFs.csv");
 
     end
@@ -73,7 +79,7 @@ LTA = FTA*Ratio;
     # set the name of the out file of snaq!
     # this name includes all the information of the input parameters for snaq!
 
-    rootname = string(dataset,"_snaq_hmax",h,"nf",NF,"xta",
+    rootname = string(partition,"_",dataset,"_snaq_hmax",h,"nf",NF,"xta",
                       XTA,"xtr",XTR,"fta",FTA,"ftr",FTR,"lta",LTA,"_",gethostname());
 
     Filename = string("h",h,"BestStartingTree.out"); # the name of starting tree model selected by findBestModel.jl
@@ -82,7 +88,7 @@ LTA = FTA*Ratio;
     # Set the seed to generate random numbers to make all the results reproducible,
     # or to restart the process if some fail.
 
-    srand(h+1);
+    srand(scalar*(h+1));
     for i in 0:id
       global s = round(Integer,floor(rand()*100000)); # seed will be used in the snaq! function
     end
@@ -92,7 +98,7 @@ LTA = FTA*Ratio;
 
     rootnameLog = string(rootname,".log");
 
-    if isfile(rootnameLog) && filesize()>1000
+    if isfile(rootnameLog) && filesize(rootnameLog)>1000
 
         print(rootname," Combination exists.");
 
