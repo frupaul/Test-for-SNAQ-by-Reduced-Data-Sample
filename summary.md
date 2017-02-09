@@ -64,7 +64,7 @@ We did not run in `darwin` machines, because we cannot control using only `darwi
 
 Action items:
 
-1. Clean up scripts, and make sure that we have on github the scripts run for perfect data. Also, create a README file with information on the scripts to summarize the output files (in julia and R).
+1. Also, create a README file with information on the scripts to summarize the output files (in julia and R).
 
 2. Wait for the remaining runs for perfect data (should be finished within a week).
 
@@ -83,3 +83,7 @@ done
 
 3. Run all combinations for the data from estimated trees on 300 genes. It looks like these [data](https://github.com/frupaul/Test-for-SNAQ-by-Reduced-Data-Sample/blob/master/data/est300GeneTrees_n15/1_seqgen.CFs.csv)
 The same starting networks could be used as for the perfect data. These runs will use `darwin02-06`. Make the names of scripts match the dataset.
+Also, keep in mind Mike's option:
+`#SBATCH --qos unlimitedcpu`
+
+4. Summarize and plot the results of perfect data
