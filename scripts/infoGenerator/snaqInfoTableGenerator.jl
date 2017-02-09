@@ -1,6 +1,8 @@
 #Pkg.add("PhyloNetworks");
+#Pkg.add("Lazy")
 #Pkg.add("DataFrames");
 #Pkg.update();
+using PhyloNetworks;
 
 if length(ARGS) < 3 && length(ARGS) > 0
 
@@ -36,35 +38,55 @@ function eachRunTimeSummary(x,y)
     if contains(x,"AM") || contains(x,"PM")
         # for the version that print time with AM and PM
         a = 1
+        if contains(x, "AM")
+            x = split(x);
+            loc = find(x -> x=="AM",x);
+            Time = split(x[loc-1][1],":");
+            if Time[1] == "12"
+                Time[1] = "$(parse(Int, Time[1])-12)";
+            end
+            x[loc-1] = string(Time[1],":",Time[2],":",Time[3]);
+            x = join(x, " ");
+        end
+        if contains(y, "AM")
+            y = split(y);
+            loc = find(x -> x=="AM",y);
+            Time = split(y[loc-1][1],":");
+            if Time[1] == "12"
+                Time[1] = "$(parse(Int, Time[1])-12)";
+            end
+            y[loc-1] = string(Time[1],":",Time[2],":",Time[3]);
+            y = join(y, " ");
+        end
         if contains(x, "PM")
             x = split(x);
             loc = find(x -> x=="PM",x);
-            time = split(x[loc-1],":");
-            if time[1] != "12"
-                time[1] == "$(parse(Int, time[1])+12)";
+            Time = split(x[loc-1][1],":");
+            if Time[1] != "12"
+                Time[1] = "$(parse(Int, Time[1])+12)";
             end
-            x[loc-1] = string(time[1],":",time[2],":",time[3]);
+            x[loc-1] = string(Time[1],":",Time[2],":",Time[3]);
             x = join(x, " ");
         end
         if contains(y, "PM")
             y = split(y);
             loc = find(x -> x=="PM",y);
-            time = split(y[loc-1],":");
-            if time[1] != "12"
-                time[1] == "$(parse(Int, time[1])+12)";
+            Time = split(y[loc-1][1],":");
+            if Time[1] != "12"
+                Time[1] = "$(parse(Int, Time[1])+12)";
             end
-            y[loc-1] = string(time[1],":",time[2],":",time[3]);
+            y[loc-1] = string(Time[1],":",Time[2],":",Time[3]);
             y = join(y, " ");
         end
     else
         a = 2
     end
 
-    if a = 1
+    if a == 1
         dat1 = DateTime(x, "e d u y H:M:S");
         dat2 = DateTime(y, "e d u y H:M:S");
-        Diff = Int(dat2 - dat1)/1000;
-    else if a = 2
+        Diff = Float64(dat2 - dat1)/1000;
+    elseif a == 2
         # for the latest PhyloNetworks, the time is in y-u-d H:M:S form.
         dat1 = DateTime(x, "y-u-d H:M:S");
         dat2 = DateTime(y, "y-u-d H:M:S");
@@ -118,7 +140,7 @@ for i in fileNames[1:end]
     # Find the topology of each run.
 
     topology = Array{String}(parse(Int, parameterInfo[8]));
-    topologyLine = split(readstring(`grep -A 1 "FINISHED SNaQ for.*" $i`),"\n")
+    topologyLine = split(readstring(`grep -A 1 "FINISHED SNaQ for.*" $i`),"\n");
     for j in 1:length(topology)
         topology[j] = topologyLine[3*j-1];
     end
@@ -127,7 +149,7 @@ for i in fileNames[1:end]
     # Save the info of time in each run.
 
     runTime = Array{String}(parse(Int, parameterInfo[8])+1);
-    runTimeLine = split(readstring(`grep -A 1 "seed:.*" $i`), "\n")
+    runTimeLine = split(readstring(`grep -A 1 "seed:.*" $i`),"\n");
     for k in 1:parse(Int, parameterInfo[8])
         runTime[k] = runTimeLine[3*k-1];
     end
@@ -137,7 +159,7 @@ for i in fileNames[1:end]
     # Count the time used for each run.
 
     runTimeNum = Array{Float64}(parse(Int, parameterInfo[8]));
-    for j in length(runTimeNum)
+    for j in 1:length(runTimeNum)
         runTimeNum[j] = eachRunTimeSummary(runTime[j],runTime[j+1]);
     end
 
@@ -198,29 +220,30 @@ for i in 2:length(fileNames)
 
 end
 
-if length(ARGS) > 1
+#if length(ARGS) > 1
 
-    trueNet = readToplogy(realTopo); # read the true topology
-    rootAtNode = split(split(split(string(trueNet),"\n")[5],"(")[2],",")[1]
+#    trueNet = readTopology(realTopo); # read the true topology
+#    rootAtNode = "15";
 
     # The loop will save 1 when the result topology is the same to the true topology,
     # otherwise it will save 0.
 
-    for i in 1:length(sameToBestTopology)
+#    for i in 1:length(sameToBestTopology)
 
-        rootatnode!(topo[i],rootAtNode);
-        dist = hardwiredClusterDistance(trueNet, topo[i], true);
-        sameToBestTopology[i] = (dist == 0) ? 1:0;
+#        topologyCompare = readTopology(topo[i]);
+#        rootatnode!(topologyCompare,rootAtNode);
+#        dist = hardwiredClusterDistance(trueNet, topologyCompare, true);
+#        sameToBestTopology[i] = (dist == 0) ? 1:0;
 
-    end
+#    end
 
-end
+#end
 
 # Generate the DataFrame and write it into a csv file.
 
 df = DataFrame(comboName=combineName,Hmax=Hmax,Nfail=Nfail,FtolRel=ftolRel,FtolAbs=ftolAbs,XtolAbs=xtolAbs,
-               XtolRel=xtolRel,LiktolAbs=liktolAbs,Seed=seed,SameToBestTopology=sameToBestTopology,Loglik=loglik,RunTime=runTime);
+               XtolRel=xtolRel,LiktolAbs=liktolAbs,Seed=seed,Loglik=loglik,RunTime=runTime);
 writetable("output.csv",df)
 
-
+# SameToBestTopology=sameToBestTopology
 
