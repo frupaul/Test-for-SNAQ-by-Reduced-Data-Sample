@@ -1,0 +1,760 @@
+optimization of topology, BL and inheritance probabilities using:
+ hmax = 3,
+ tolerance parameters: ftolRel=1.0e-5, ftolAbs=0.01,
+                       xtolAbs=0.001, xtolRel=0.01.
+ max number of failed proposals = 100, liktolAbs = 0.01.
+rootname for files: slurm_hmax3nf100xta0.001xtr0.01fta0.01ftr1.0e-5lta0.01_snaq
+BEGIN: 30 runs on starting tree (9,8,((7,(((13,12):1.000001166597735,(11,#H18:::0.09999875465243628):1.0000204472749221):0.9999979573450719,((14,((15,1):1.0002254057867366,(((6,(4,5):0.8293807342648114):0.7433412996600327,(3,2):1.5784018786838747):1.1004019888566605)#H17:1.0158067404974127::0.9001666143812492):0.9997269113282266):1.0021216294578101,#H17:2.5976046523016554::0.09983338561875077):0.9981499516918447):0.9999997996675094):0.9999938111783805,(10)#H18:::0.9000012453475638):1.0000051253702036);
+
+main seed 49057
+seed: 49057 for run 1
+Sun 29 Jan 2017 08:31:55 AM CST
+
+ BEGIN SNaQ for run 1, seed 49057 and hmax 3
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 170 (failures: 100) with -loglik=0.12747 and ht_min=[0.10001,0.0996,0.09952,0.99998,0.99924,1.00001,1.00043,1.0025,0.99965,0.9994,0.98061,1.02258,0.99932,1.0054,5.28285,0.99536,1.00001,1.00001,1.00003,0.87512]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 1		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 44		 44		 1	 |	 0		 0		 --
+mvtarget	 52		 52		 0	 |	 0		 0		 --
+chdir		 29		 29		 1	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 44		 31		 0	 |	 0		 0		 --
+Total		 170		 157		 3	 |	 0		 0		 0
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 0.0		 0.0
+
+ FINISHED SNaQ for run 1, -loglik of best 0.12747225342108592
+(9,8,((7,(((13,12):0.9999813900191034,(11,#H18:::0.10000741891074215):0.9992400074611228):1.0000064777634354,((14,((15,1):1.0004254575812,(((6,(5,(4,#H1:::0.09952294433387139):1.002497979471139):0.9996451135048863):0.9994028449360423,((3,2):0.8751245011124242)#H1:::0.9004770556661286):0.9806149957499706)#H17:1.0225805332613944::0.9003973464736585):0.9993207141876752):1.0053961362567074,#H17:5.2828542672292835::0.09960265352634148):0.9953644166451533):1.0000134171399104):1.00000945824661,(10)#H18:::0.8999925810892578):1.0000318782311683);
+---------------------
+seed: 98392 for run 2
+Sun 29 Jan 2017 01:14:25 PM CST
+
+ BEGIN SNaQ for run 2, seed 98392 and hmax 3 changed starting topology by NNI move
+
+ changed starting network by move origin
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 147 (failures: 100) with -loglik=94.86037 and ht_min=[0.10002,0.07976,0.03592,1.00001,0.98421,0.9998,0.95717,1.03935,0.82948,0.3041,1.73176,1.84675,0.09341,1.62424,0.00123,0.74276,1.00006,0.99977,0.99932,0.0]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 1		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 40		 40		 3	 |	 0		 0		 --
+mvtarget	 32		 32		 0	 |	 0		 0		 --
+chdir		 33		 33		 2	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 41		 38		 0	 |	 6		 6		 --
+Total		 147		 144		 6	 |	 6		 6		 6
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 1.0		 1.0
+
+ FINISHED SNaQ for run 2, -loglik of best 94.86036566617923
+(15,1,((14,((((13,12):1.0000114895322203,(11,#H18:::0.10001829276212269):0.9842086540089887):0.9998021368345085,(7,((10)#H18:::0.8999817072378773,(9,8):0.9993234464644773):0.9997665944841443):1.0000609554101307):1.8467488489154296)#H17:0.0934147750875154::0.9202415894566041):0.9571676794510595,(#H17:0.0012340417368972257::0.07975841054339594,(((2,(3)#H1:::0.9640847659932587):1.7317631817281909,(6,(4,5):0.8294781073122576):0.74275902271218):0.0,#H1:::0.035915234006741355):0.30410035902128746):1.6242368212173417):1.0393544741451903);
+---------------------
+seed: 60177 for run 3
+Sun 29 Jan 2017 03:59:14 PM CST
+
+ BEGIN SNaQ for run 3, seed 60177 and hmax 3 changed starting topology by NNI move
+
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 235 (failures: 100) with -loglik=34.60797 and ht_min=[0.09992,0.10059,0.06833,0.99862,1.00591,0.99974,0.99887,0.09928,1.09904,1.07758,0.83781,1.01545,1.00203,1.00027,9.01888,1.0003,1.00015,0.99959,1.00071,1.56302]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 1		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 54		 54		 4	 |	 0		 0		 --
+mvtarget	 67		 67		 1	 |	 0		 0		 --
+chdir		 53		 49		 0	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 60		 40		 0	 |	 1		 1		 --
+Total		 235		 211		 6	 |	 1		 1		 1
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 1.0		 1.0
+
+ FINISHED SNaQ for run 3, -loglik of best 34.60796753754875
+(9,8,((7,(((13,12):0.9986180371852582,(11,#H18:::0.09991586231893738):1.0059119462302348):0.9997408535579984,((14,((15,1):0.9988662403640947,(((6,(5,(4)#H1:::0.9316664741569906):1.0990375232778218):0.8378143867855771,((3,2):0.09927560280226329,#H1:::0.06833352584300945):1.5630158793247872):1.0775824266843472)#H17:1.0154525822227423::0.8994086005592261):1.0020318371478383):1.0002668362074294,#H17:9.018875211952588::0.10059139944077387):1.000301265431772):1.0001548207617725):0.9995875185542524,(10)#H18:::0.9000841376810627):1.0007070892835934);
+---------------------
+seed: 15986 for run 4
+Sun 29 Jan 2017 09:10:13 PM CST
+
+ BEGIN SNaQ for run 4, seed 15986 and hmax 3 changed starting topology by NNI move
+
+ changed starting network by move origin
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 136 (failures: 100) with -loglik=33.95055 and ht_min=[0.1001,0.10032,0.11261,0.99958,1.00164,1.00005,0.9995,0.69107,1.08261,1.04289,0.46166,0.96577,1.00065,0.99771,0.21836,1.00232,1.00026,1.00031,0.99944,1.0134,0.87851,0.00073]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 2		 2		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 42		 42		 2	 |	 1		 1		 --
+mvtarget	 32		 32		 1	 |	 0		 0		 --
+chdir		 24		 22		 0	 |	 1		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 36		 19		 0	 |	 3		 3		 --
+Total		 136		 117		 4	 |	 5		 4		 3
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 1.0		 0.8
+
+ FINISHED SNaQ for run 4, -loglik of best 33.95054688344526
+(9,8,(((((13,12):0.9995813863304461,(11,#H18:::0.1000958885763528):1.0016413018139891):1.000049417392095,((14,((15,1):0.9995031331016909,(((6,((5,4):0.4616565623663332)#H1:0.8785050378066872::0.887387685725434):1.042885785382344,((3,2):0.6910654194281012,#H1:0.0007312887009814484::0.11261231427456599):1.0134034524200046):1.0826051491806241)#H17:0.9657689285096979::0.8996767344517153):1.0006457629423533):0.9977130422251498,#H17:0.21836197850066974::0.10032326554828475):1.0023195912108713):1.0002615764923364,7):1.0003129500598031,(10)#H18:::0.8999041114236472):0.9994447237471729);
+---------------------
+seed: 98354 for run 5
+Sun 29 Jan 2017 10:35:30 PM CST
+
+ BEGIN SNaQ for run 5, seed 98354 and hmax 3 changed starting topology by NNI move
+
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 172 (failures: 100) with -loglik=27.26381 and ht_min=[0.09997,0.10005,0.12656,0.99977,1.00348,1.00004,1.00007,1.15445,0.0,1.04233,0.95855,1.02375,1.00013,1.00149,6.47732,0.99897,1.00003,0.99987,1.00067,0.96824,0.99389,3.05038]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 1		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 40		 40		 1	 |	 0		 0		 --
+mvtarget	 53		 53		 1	 |	 0		 0		 --
+chdir		 39		 37		 1	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 39		 25		 0	 |	 3		 3		 --
+Total		 172		 156		 4	 |	 3		 3		 2
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 1.0		 0.7
+
+ FINISHED SNaQ for run 5, -loglik of best 27.26381300663421
+(9,8,((7,(((13,12):0.9997704639958639,(11,#H18:::0.09997324800674383):1.0034793698391935):1.0000386523441172,((14,((15,1):1.0000658308127284,(((6,((5,4):0.0,#H1:3.0503847739951744::0.1265611268753996):0.9682395850494535):1.0423316301535908,((3,2):0.9938897343093682)#H1:1.1544454392277599::0.8734388731246003):0.958552380361698)#H17:1.0237487625305106::0.8999524339325906):1.0001256620533598):1.001494261733424,#H17:6.4773217728746975::0.10004756606740933):0.9989718390827234):1.0000329526321803):0.9998694278709273,(10)#H18:::0.9000267519932562):1.0006663168575374);
+---------------------
+seed: 1198 for run 6
+Mon 30 Jan 2017 03:19:02 AM CST
+
+ BEGIN SNaQ for run 6, seed 1198 and hmax 3
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 123 (failures: 100) with -loglik=0.13988 and ht_min=[0.10022,0.10087,0.10041,1.00014,0.98788,0.9997,0.99965,1.00041,1.21093,1.00015,0.99495,1.02408,0.96916,1.00212,0.99497,0.39477,1.00484,1.00034,1.00079,0.99913,0.64373,0.0]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 4		 4		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 40		 40		 1	 |	 0		 0		 --
+mvtarget	 30		 30		 0	 |	 0		 0		 --
+chdir		 22		 20		 1	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 27		 19		 0	 |	 0		 0		 --
+Total		 123		 113		 3	 |	 0		 0		 0
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 0.0		 0.0
+
+ FINISHED SNaQ for run 6, -loglik of best 0.13987779842090464
+(9,8,((7,(((13,12):1.000139933146659,(11,#H18:::0.10022461211909199):0.9878794364511962):0.9997005056183839,((14,((15,1):0.9996511100955661,(((6,(5,(4,#H1:0.0::0.10040881071746438):0.9949518114824578):1.0004105909286434):1.000145031443126,((3,2):1.2109250788397607)#H1:0.6437283936734397::0.8995911892825357):1.024077032017178)#H17:0.96916368444493::0.8991309661725593):1.0021244253437993):0.9949651864943853,#H17:0.3947663977714129::0.10086903382744074):1.004839387459716):1.0003448568133566):1.0007895986225877,(10)#H18:::0.899775387880908):0.9991255127461204);
+---------------------
+seed: 3799 for run 7
+Mon 30 Jan 2017 07:15:09 AM CST
+
+ BEGIN SNaQ for run 7, seed 3799 and hmax 3
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 166 (failures: 100) with -loglik=0.20181 and ht_min=[0.09998,0.09962,0.09952,0.99989,1.0018,1.00005,1.0005,0.83704,0.9996,0.9993,0.99773,0.97753,1.02824,0.99929,1.00337,5.62201,0.99699,0.99991,1.00006,0.99982]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 3		 2		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 42		 42		 1	 |	 0		 0		 --
+mvtarget	 39		 39		 0	 |	 0		 0		 --
+chdir		 30		 30		 1	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 52		 43		 0	 |	 0		 0		 --
+Total		 166		 156		 3	 |	 0		 0		 0
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 0.0		 0.0
+
+ FINISHED SNaQ for run 7, -loglik of best 0.2018116654446209
+(9,8,((7,(((13,12):0.9998919316538161,(11,#H18:::0.09997702651667495):1.0017996483859013):1.000045386865259,((14,((15,1):1.0005047443819979,(((6,(5,(4,#H1:::0.09952169660644844):0.9977316537346747):0.9996003012196185):0.9992965226541145,((2,3):0.8370378148309517)#H1:::0.9004783033935515):0.9775269584517675)#H17:1.028242482507855::0.9003841617644248):0.9992850934963524):1.003373163667283,#H17:5.622013534964736::0.09961583823557513):0.996985888865626):0.9999124915781756):1.0000634978855234,(10)#H18:::0.900022973483325):0.9998249969347749);
+---------------------
+seed: 90094 for run 8
+Mon 30 Jan 2017 11:46:02 AM CST
+
+ BEGIN SNaQ for run 8, seed 90094 and hmax 3
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 113 (failures: 100) with -loglik=66.88394 and ht_min=[0.09995,0.09978,0.09611,0.99996,1.00595,0.99999,1.00029,0.71104,0.92007,1.5603,0.61739,1.0138,0.99957,1.00265,2.49733,0.99778,0.99996,0.99979,1.00011,0.52139]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 1		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 39		 39		 0	 |	 0		 0		 --
+mvtarget	 26		 25		 0	 |	 0		 0		 --
+chdir		 17		 14		 0	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 30		 23		 0	 |	 0		 0		 --
+Total		 113		 102		 1	 |	 0		 0		 0
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 0.0		 0.0
+
+ FINISHED SNaQ for run 8, -loglik of best 66.88393909336678
+(9,8,((7,(((13,12):0.9999567864867199,(11,#H18:::0.09994749331272795):1.0059499521780435):0.9999896777925299,((14,((15,1):1.0002890364205805,(((((4,5):0.7110355576311131,(6)#H1:::0.9038933982391899):0.9200724816237525,(3,2):1.5602992424591153):0.6173916117265296,#H1:::0.0961066017608101):0.5213889633423133)#H17:1.0137953715033492::0.900216591970913):0.9995705563304887):1.002645609568931,#H17:2.4973307175093105::0.09978340802908701):0.9977817339720167):0.9999580448126083):0.9997932127653077,(10)#H18:::0.900052506687272):1.0001058763672328);
+---------------------
+seed: 94558 for run 9
+Mon 30 Jan 2017 02:41:39 PM CST
+
+ BEGIN SNaQ for run 9, seed 94558 and hmax 3 changed starting topology by NNI move
+
+ changed starting network by move origin
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 263 (failures: 100) with -loglik=0.81665 and ht_min=[0.1,0.09979,0.10095,1.00003,1.00361,0.99993,1.00024,1.53059,1.00015,1.00027,0.98217,1.02387,0.99967,1.00253,3.35662,0.9978,0.99999,1.00007,1.00006,0.99383]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 1		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 65		 65		 7	 |	 0		 0		 --
+mvtarget	 75		 75		 1	 |	 0		 0		 --
+chdir		 56		 52		 3	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 66		 43		 0	 |	 3		 3		 --
+Total		 263		 236		 12	 |	 3		 3		 1
+Proportion	 -- 		 1.0		 0.1	 |	 -- 		 1.0		 0.3
+
+ FINISHED SNaQ for run 9, -loglik of best 0.8166488332906355
+(9,8,((7,(((14,((15,1):1.0002431526634614,(((6,(5,(4,#H1:::0.10095451305502082):0.9938296442194432):1.0001499536504224):1.0002734343937434,((3,2):1.5305904278425397)#H1:::0.8990454869449792):0.9821699541760625)#H17:1.023868834421884::0.900213401488689):0.9996734694946102):1.002526559233942,#H17:3.356623596031982::0.09978659851131101):0.9977983132463807,((13,12):0.9999344784464065,(11,#H18:::0.09999676903551333):1.0036135624292977):1.0000295997278719):0.9999891827866982):1.0000712016263043,(10)#H18:::0.9000032309644866):1.0000622494124614);
+---------------------
+seed: 91906 for run 10
+Mon 30 Jan 2017 08:58:10 PM CST
+
+ BEGIN SNaQ for run 10, seed 91906 and hmax 3 changed starting topology by NNI move
+
+ changed starting network by move target
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 189 (failures: 100) with -loglik=94.55163 and ht_min=[0.10035,0.06637,1.0e-5,1.00018,0.97271,1.00105,1.80193,0.29503,0.82834,0.52501,0.74447,1.64865,8.224,0.13928,1.04813,0.34776,0.93116,1.00052,1.00148,0.99998,1.28144,3.32789]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 4		 4		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 41		 41		 3	 |	 0		 0		 --
+mvtarget	 57		 57		 3	 |	 0		 0		 --
+chdir		 42		 42		 2	 |	 1		 1		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 45		 31		 0	 |	 2		 2		 --
+Total		 189		 175		 9	 |	 3		 3		 3
+Proportion	 -- 		 1.0		 0.1	 |	 -- 		 1.0		 1.0
+
+ FINISHED SNaQ for run 10, -loglik of best 94.55163066084612
+(15,1,((14,(((7,((10)#H18:::0.8996453111678169,(9,8):0.9999794193976386):1.0014773848127627):1.0005213747192043,((13,12):1.0001849214638807,(11,#H18:::0.1003546888321831):0.9727068843866168):1.0010475029749686):1.6486547894146506)#H17:0.34776284295307913::0.9336278993624331):0.9311606956233125,(#H17:8.223999460319021::0.06637210063756693,((6,(5,(4,#H1:3.327886081075884::7.516560626509797e-6):0.5250094296891049):0.8283382696381426):0.744470246004585,((3,2):1.281444731803958)#H1:0.29503155638658674::0.9999924834393735):0.13927649044247667):1.8019305907501317):1.04813308679563);
+---------------------
+seed: 60915 for run 11
+Mon 30 Jan 2017 10:33:04 PM CST
+
+ BEGIN SNaQ for run 11, seed 60915 and hmax 3
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 194 (failures: 100) with -loglik=0.00624 and ht_min=[0.09997,0.10049,0.10047,1.00001,1.00475,0.99989,0.99922,1.00046,0.97707,1.00133,0.99821,1.02371,0.97125,1.00081,0.99321,0.19353,1.00571,1.00001,0.99991,1.00007,1.00994,0.54348]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 2		 2		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 55		 55		 1	 |	 0		 0		 --
+mvtarget	 52		 52		 0	 |	 0		 0		 --
+chdir		 36		 35		 0	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 49		 26		 0	 |	 0		 0		 --
+Total		 194		 170		 2	 |	 0		 0		 0
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 0.0		 0.0
+
+ FINISHED SNaQ for run 11, -loglik of best 0.0062380479293298674
+(9,8,((7,(((13,12):1.000006547551473,(11,#H18:::0.0999685136388478):1.0047531629552118):0.9998857209347107,((14,((15,1):0.999223886145763,(((6,(5,(4,#H1:0.5434849892857077::0.10046969421325488):0.9770704913504796):1.0004577211567645):1.0013277298182208,((3,2):0.998210694272075)#H1:1.0099383719643593::0.8995303057867451):1.0237127783416038)#H17:0.9712497789946427::0.8995050432613696):1.000805415620257):0.9932051597153183,#H17:0.19353263033287876::0.10049495673863039):1.00570847269655):1.0000146165965762):0.9999099150106725,(10)#H18:::0.9000314863611522):1.000065791443149);
+---------------------
+seed: 71957 for run 12
+Tue 31 Jan 2017 03:58:35 AM CST
+
+ BEGIN SNaQ for run 12, seed 71957 and hmax 3 changed starting topology by NNI move
+
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 117 (failures: 100) with -loglik=81.63911 and ht_min=[0.09989,0.09997,0.02476,1.00012,1.01404,0.99979,1.00106,0.91805,0.7693,1.5753,0.53784,1.05146,0.99948,0.98713,8.27142,1.00987,1.0002,0.99899,0.99987,0.55152]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 1		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 32		 32		 0	 |	 0		 0		 --
+mvtarget	 34		 32		 0	 |	 0		 0		 --
+chdir		 17		 15		 0	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 33		 24		 0	 |	 3		 3		 --
+Total		 117		 104		 1	 |	 3		 3		 3
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 1.0		 1.0
+
+ FINISHED SNaQ for run 12, -loglik of best 81.63910777576763
+(9,8,((7,(((13,12):1.0001211210155323,(11,#H18:::0.09989275114299459):1.0140427417568378):0.999790960992837,((14,((15,1):1.0010599128158937,(((((4,(5)#H1:::0.9752427098336387):0.9180524834282761,6):0.7693017726115537,(3,2):1.5753025962636085):0.5515231287510033,#H1:::0.024757290166361304):0.5378438185385388)#H17:1.051459999993501::0.9000263769157755):0.9994810926476546):0.9871313258464799,#H17:8.271423842121333::0.09997362308422457):1.0098662815188146):1.0001962252135401):0.9989948014393244,(10)#H18:::0.9001072488570054):0.9998743665299692);
+---------------------
+seed: 55053 for run 13
+Tue 31 Jan 2017 06:41:14 AM CST
+
+ BEGIN SNaQ for run 13, seed 55053 and hmax 3 changed starting topology by NNI move
+
+ changed starting network by move origin
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 139 (failures: 100) with -loglik=82.11505 and ht_min=[0.09901,0.10164,0.03938,0.99644,1.0691,1.00224,1.00363,0.99862,1.72458,0.83037,0.78691,1.07054,1.02862,0.96892,6.546,1.02285,0.99808,0.9968,1.00103,0.0,0.24023,0.45495]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 2		 2		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 42		 42		 3	 |	 1		 1		 --
+mvtarget	 39		 39		 1	 |	 0		 0		 --
+chdir		 26		 25		 0	 |	 2		 2		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 30		 20		 0	 |	 1		 1		 --
+Total		 139		 128		 5	 |	 4		 4		 3
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 1.0		 0.8
+
+ FINISHED SNaQ for run 13, -loglik of best 82.1150543721183
+(9,8,((7,(((13,12):0.9964433855445005,(11,#H18:::0.0990143862512481):1.0690995975195212):1.0022443515863007,((((15,1):0.9986216408451538,((((4,5):0.8303704635145359,(6,#H1:0.45494761756904584::0.039378746543332975):0.0):0.7869119016080293,((3,2):0.24022683647480664)#H1:1.7245803516961495::0.960621253456667):1.0705447122174907)#H17:1.0286163749023776::0.8983627789105719):1.0036345371449007,14):0.9689209935256683,#H17:6.546000104707594::0.10163722108942809):1.0228535768271956):0.9980848788971568):0.9968023291941266,(10)#H18:::0.9009856137487519):1.001027229207058);
+---------------------
+seed: 21977 for run 14
+Tue 31 Jan 2017 08:48:44 AM CST
+
+ BEGIN SNaQ for run 14, seed 21977 and hmax 3
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 127 (failures: 100) with -loglik=66.88428 and ht_min=[0.10001,0.09991,0.09609,1.00001,0.99961,1.00001,1.00017,0.51766,0.71127,0.91987,1.56033,1.0198,0.99991,1.00162,5.48836,0.9986,1.00002,1.00002,0.99998,0.61698]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 2		 2		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 26		 26		 0	 |	 0		 0		 --
+mvtarget	 50		 50		 0	 |	 0		 0		 --
+chdir		 22		 19		 0	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 27		 18		 0	 |	 0		 0		 --
+Total		 127		 115		 1	 |	 0		 0		 0
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 0.0		 0.0
+
+ FINISHED SNaQ for run 14, -loglik of best 66.8842795537006
+(9,8,((7,(((13,12):1.0000094277986928,(11,#H18:::0.10000777035170963):0.9996059215916877):1.0000111818464623,((14,((15,1):1.0001698180532568,(((((4,5):0.7112688356563254,(6)#H1:::0.9039134735016149):0.9198657077420711,(3,2):1.5603305845919195):0.6169844199258093,#H1:::0.09608652649838516):0.5176584827429745)#H17:1.0198031775616296::0.90009321613581):0.9999105163046089):1.0016192870519984,#H17:5.488356595867566::0.09990678386419):0.9986042627436053):1.0000219326986823):1.0000200471255785,(10)#H18:::0.8999922296482904):0.9999767610736997);
+---------------------
+seed: 80183 for run 15
+Tue 31 Jan 2017 12:28:11 PM CST
+
+ BEGIN SNaQ for run 15, seed 80183 and hmax 3
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 248 (failures: 100) with -loglik=0.42926 and ht_min=[0.09999,0.0997,0.09927,0.99996,1.00114,1.00001,1.00034,0.9994,1.00079,0.99913,0.97976,1.02398,0.99948,1.00393,5.98457,0.99658,0.99998,0.99998,1.00003,0.75453]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 1		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 65		 65		 6	 |	 0		 0		 --
+mvtarget	 63		 63		 1	 |	 0		 0		 --
+chdir		 57		 56		 2	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 62		 45		 0	 |	 0		 0		 --
+Total		 248		 230		 10	 |	 0		 0		 0
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 0.0		 0.0
+
+ FINISHED SNaQ for run 15, -loglik of best 0.42925613060032086
+(9,8,((7,(((13,12):0.9999626720982925,(11,#H18:::0.09998730938011172):1.0011438644824162):1.000009575610405,((14,((15,1):1.0003435316787195,(((6,(5,(4,#H1:::0.09926633214004088):1.0007912253295834):0.9993957793176963):0.9991326423347805,((3,2):0.7545321014311995)#H1:::0.9007336678599591):0.9797606913689457)#H17:1.0239849410060007::0.9003044259825216):0.9994786228239141):1.0039345775846562,#H17:5.984569203296085::0.0996955740174784):0.9965841034799557):0.9999836828520198):0.9999776854703002,(10)#H18:::0.9000126906198883):1.0000268756995319);
+---------------------
+seed: 67579 for run 16
+Tue 31 Jan 2017 06:40:01 PM CST
+
+ BEGIN SNaQ for run 16, seed 67579 and hmax 3 changed starting topology by NNI move
+
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 122 (failures: 100) with -loglik=66.88756 and ht_min=[0.1,0.10038,0.09494,0.9999,0.99989,1.00005,0.99967,0.55718,0.71215,0.91816,1.56058,0.96446,1.00051,0.99328,0.07209,1.00566,1.00007,0.99982,1.00002,0.62378]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 1		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 22		 22		 0	 |	 0		 0		 --
+mvtarget	 40		 40		 0	 |	 0		 0		 --
+chdir		 17		 13		 0	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 42		 26		 0	 |	 1		 1		 --
+Total		 122		 102		 1	 |	 1		 1		 1
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 1.0		 1.0
+
+ FINISHED SNaQ for run 16, -loglik of best 66.88755611770287
+(9,8,((7,(((12,13):0.9999032690050758,(11,#H18:::0.10000157632806497):0.9998893766168486):1.0000481219590485,((14,((15,1):0.9996707102386674,(((((4,5):0.7121512924163192,(6)#H1:::0.9050624172729343):0.9181562550592672,(3,2):1.5605751763627922):0.6237789161630931,#H1:::0.09493758272706569):0.5571826247392686)#H17:0.9644572480290702::0.8996239536394715):1.0005073930794657):0.9932848701256705,#H17:0.07208552376474779::0.10037604636052856):1.0056647872666418):1.0000676372763868):0.9998181817367933,(10)#H18:::0.899998423671935):1.0000189506185084);
+---------------------
+seed: 36931 for run 17
+Tue 31 Jan 2017 09:48:56 PM CST
+
+ BEGIN SNaQ for run 17, seed 36931 and hmax 3 changed starting topology by NNI move
+
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 266 (failures: 100) with -loglik=36.99938 and ht_min=[0.10024,0.10017,0.07505,0.99921,0.98009,1.00023,1.00014,0.96507,0.2551,1.76799,1.04522,1.01665,1.00056,0.9993,9.88976,1.00065,1.00052,1.00163,0.99871,0.01472,1.04134,0.0002]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 2		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 79		 79		 5	 |	 0		 0		 --
+mvtarget	 60		 60		 1	 |	 0		 0		 --
+chdir		 49		 49		 0	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 76		 48		 0	 |	 5		 5		 --
+Total		 266		 237		 7	 |	 5		 5		 2
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 1.0		 0.4
+
+ FINISHED SNaQ for run 17, -loglik of best 36.99938076266928
+(9,8,((7,(((13,12):0.9992138355876595,(11,#H18:::0.10024396130855699):0.980085167154046):1.0002332751340766,((14,((15,1):1.0001363700391266,(((6,((5,4):0.25510086362528245)#H1:1.0413403319130963::0.9249523137245478):0.9650682321547545,((3,2):0.014715537615059561,#H1:0.00020074648895293336::0.0750476862754522):1.7679857893007116):1.0452190129835899)#H17:1.016646629531562::0.8998318821510588):1.000562575762121):0.9992975581844367,#H17:9.889759755100043::0.1001681178489412):1.000646766327832):1.000517416593753):1.0016257871285692,(10)#H18:::0.899756038691443):0.9987075394467835);
+---------------------
+seed: 63240 for run 18
+Wed 01 Feb 2017 12:48:05 AM CST
+
+ BEGIN SNaQ for run 18, seed 63240 and hmax 3
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 151 (failures: 100) with -loglik=0.17151 and ht_min=[0.1,0.10002,0.09945,1.00008,1.00007,0.99998,1.0,0.85042,0.99955,0.99932,0.99717,1.00419,1.00006,0.99886,1.07517,1.00085,0.99995,0.99993,1.0,1.00251]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 1		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 37		 37		 0	 |	 0		 0		 --
+mvtarget	 47		 47		 0	 |	 0		 0		 --
+chdir		 27		 27		 1	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 39		 22		 0	 |	 0		 0		 --
+Total		 151		 134		 2	 |	 0		 0		 0
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 0.0		 0.0
+
+ FINISHED SNaQ for run 18, -loglik of best 0.1715094430827174
+(9,8,((7,(((13,12):1.0000751690494352,(11,#H18:::0.10000267163991947):1.0000663110565757):0.9999778150948361,((14,((15,1):1.0000049800897561,(((6,(5,(4,#H1:::0.09945464350797144):1.0025102905446273):0.999552512882363):0.9993195848372493,((3,2):0.8504167942771628)#H1:::0.9005453564920286):0.9971747220927835)#H17:1.0041937770715823::0.8999758105105281):1.0000641328416287):0.9988594803972581,#H17:1.075171614967209::0.10002418948947192):1.0008541787798262):0.999949254387704):0.9999297956437366,(10)#H18:::0.8999973283600805):1.0000024512827155);
+---------------------
+seed: 7508 for run 19
+Wed 01 Feb 2017 04:24:53 AM CST
+
+ BEGIN SNaQ for run 19, seed 7508 and hmax 3 changed starting topology by NNI move
+
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 426 (failures: 100) with -loglik=34.86538 and ht_min=[0.1,0.10045,0.06614,1.0,1.00001,1.0,0.99957,1.09009,0.00086,0.83666,1.1233,0.95837,1.00072,0.99385,0.03735,1.00532,1.0,1.0,1.0,1.66619]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 4		 4		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 114		 114		 7	 |	 0		 0		 --
+mvtarget	 100		 100		 6	 |	 0		 0		 --
+chdir		 97		 97		 1	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 111		 81		 0	 |	 1		 1		 --
+Total		 426		 396		 15	 |	 1		 1		 1
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 1.0		 1.0
+
+ FINISHED SNaQ for run 19, -loglik of best 34.86538389911921
+(9,8,((7,(((11,#H18:::0.09999893504008434):1.0000116165594697,(13,12):0.9999964363643031):0.9999996943598796,((14,((15,1):0.99956855249447,(((6,(5,(4)#H1:::0.9338619208113912):1.0900916648712395):0.8366576325246748,((2,3):0.000860436492126024,#H1:::0.06613807918860884):1.6661853502121846):1.1232991408357376)#H17:0.9583722828760998::0.8995454158633788):1.0007173929877493):0.9938519511209905,#H17:0.03735009954862686::0.10045458413662123):1.0053214091342146):1.000000801364403):0.9999956636608658,(10)#H18:::0.9000010649599157):1.0000024864455772);
+---------------------
+seed: 84883 for run 20
+Wed 01 Feb 2017 01:18:56 PM CST
+
+ BEGIN SNaQ for run 20, seed 84883 and hmax 3 changed starting topology by NNI move
+
+ changed starting network by move target
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 151 (failures: 100) with -loglik=103.39405 and ht_min=[0.10001,0.06331,0.11089,0.99997,0.99958,0.99988,0.8391,1.54648,0.43864,0.67449,1.03891,1.73357,0.00259,1.13313,0.9998,0.99996,1.0,1.0311,0.91855,0.04437]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 2		 2		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 47		 47		 4	 |	 4		 4		 --
+mvtarget	 41		 41		 0	 |	 3		 3		 --
+chdir		 29		 29		 5	 |	 7		 7		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 32		 18		 0	 |	 2		 2		 --
+Total		 151		 137		 10	 |	 16		 16		 8
+Proportion	 -- 		 1.0		 0.1	 |	 -- 		 1.0		 0.5
+
+ FINISHED SNaQ for run 20, -loglik of best 103.39405019270714
+(9,8,((7,(((13,12):0.9999700434577771,(11,#H18:::0.10000841743551486):0.9995791128807181):0.9998778178538515,((((6,((4,5):0.43864389442443735)#H1:0.9185489132224425::0.8891143775954945):1.038909876781504,((3,2):0.6744943514585129,#H1:0.044372965802293::0.11088562240450546):1.031101807755111):1.5464800725480734,((1,15):0.002585663306129637,#H17:::0.06331407385664224):1.133129830776739):0.8391043102644411,(14)#H17:::0.9366859261433578):1.7335684771372089):0.9998040024114689):0.9999597851605306,(10)#H18:::0.8999915825644851):0.9999991042100419);
+---------------------
+seed: 37728 for run 21
+Wed 01 Feb 2017 02:36:47 PM CST
+
+ BEGIN SNaQ for run 21, seed 37728 and hmax 3
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 120 (failures: 100) with -loglik=81.84019 and ht_min=[0.09907,0.10037,0.03503,0.99985,1.04558,0.99968,0.99971,0.00015,0.92916,1.57611,1.07372,1.07255,1.00026,0.98065,3.57118,1.01539,0.99893,0.99478,1.00184,0.76822]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 4		 3		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 29		 29		 0	 |	 0		 0		 --
+mvtarget	 33		 33		 0	 |	 0		 0		 --
+chdir		 18		 14		 0	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 36		 25		 0	 |	 0		 0		 --
+Total		 120		 104		 1	 |	 0		 0		 0
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 0.0		 0.0
+
+ FINISHED SNaQ for run 21, -loglik of best 81.84018746400568
+(9,8,((7,(((13,12):0.9998512495037111,(11,#H18:::0.09906738200807194):1.0455823188938937):0.9996832982637632,((14,((15,1):0.9997105501653487,(((3,2):1.5761086441255556,((6,(5,(4)#H1:::0.9649696956204519):0.9291553206095243):0.7682160125208732,#H1:::0.03503030437954817):0.00015394683466911295):1.0737164575214218)#H17:1.072554070109456::0.8996303751662754):1.0002588464163689):0.980654835737952,#H17:3.5711762809089915::0.10036962483372454):1.0153856275618762):0.9989329265204074):0.9947848409556421,(10)#H18:::0.900932617991928):1.001835212641639);
+---------------------
+seed: 10772 for run 22
+Wed 01 Feb 2017 05:31:59 PM CST
+
+ BEGIN SNaQ for run 22, seed 10772 and hmax 3
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 117 (failures: 100) with -loglik=81.9244 and ht_min=[0.09976,0.09974,0.02032,1.00004,0.99658,1.00025,1.00051,0.90633,0.76544,1.57297,0.70821,1.01809,0.99841,0.99509,0.87663,1.00333,0.99913,0.99874,1.0009,0.40661]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 2		 2		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 27		 27		 0	 |	 0		 0		 --
+mvtarget	 38		 38		 0	 |	 0		 0		 --
+chdir		 19		 17		 0	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 31		 24		 0	 |	 0		 0		 --
+Total		 117		 108		 1	 |	 0		 0		 0
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 0.0		 0.0
+
+ FINISHED SNaQ for run 22, -loglik of best 81.9244015751655
+(9,8,((7,(((13,12):1.000042977180074,(11,#H18:::0.09976449254844512):0.9965846763497347):1.0002513873130408,((14,((15,1):1.000510180162659,((((6,(4,(5)#H1:::0.9796826795583014):0.9063266312217643):0.7654378557401459,(3,2):1.5729660821365385):0.7082132590004204,#H1:::0.0203173204416987):0.40660878369269116)#H17:1.0180892001738755::0.9002624802006339):0.9984115553012295):0.9950879912331166,#H17:0.8766327999096507::0.09973751979936608):1.003328254171748):0.9991342407494829):0.9987367709951597,(10)#H18:::0.9002355074515549):1.0008967122885393);
+---------------------
+seed: 20549 for run 23
+Wed 01 Feb 2017 07:53:08 PM CST
+
+ BEGIN SNaQ for run 23, seed 20549 and hmax 3 changed starting topology by NNI move
+
+ changed starting network by move target
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 141 (failures: 100) with -loglik=89.319 and ht_min=[0.10214,0.0551,0.08636,1.00433,0.7836,0.99622,1.05596,1.19733,1.26281,1.93826,0.28233,1.67372,0.90281,0.0,8.43112,0.9996,1.0089,0.99712,0.24793,1.58183,0.02043]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 3		 2		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 41		 41		 2	 |	 0		 0		 --
+mvtarget	 37		 37		 0	 |	 0		 0		 --
+chdir		 24		 17		 1	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 36		 30		 0	 |	 2		 2		 --
+Total		 141		 127		 4	 |	 2		 2		 1
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 1.0		 0.5
+
+ FINISHED SNaQ for run 23, -loglik of best 89.31899794222271
+(5,((((((15,1):1.0559630547235899,(14,((((13,12):1.0043346711578292,(11,#H18:::0.10214323569407494):0.7835951181736707):0.99622347077614,(7,((10)#H18:::0.8978567643059251,(9,8):0.9971222107764228):1.0089015522084845):0.9995981231497437):1.6737241718119078)#H17:0.28233424961867837::0.944902138823232):0.9028065808669178):1.9382639951845517,(3,2):1.5818280548742771):0.0,#H17:8.431123454593472::0.05509786117676797):0.0)#H1:1.262814214912626::0.913635948341331,6):1.1973324438972235,(4,#H1:0.02042926148527044::0.08636405165866902):0.2479321092340445);
+---------------------
+seed: 91303 for run 24
+Wed 01 Feb 2017 10:58:45 PM CST
+
+ BEGIN SNaQ for run 24, seed 91303 and hmax 3 changed starting topology by NNI move
+
+ changed starting network by move target
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 185 (failures: 100) with -loglik=0.00619 and ht_min=[0.10007,0.1,0.09996,1.00004,0.99405,0.99998,0.96661,0.99969,1.00008,1.0022,1.02737,0.96585,0.99979,0.99729,0.07485,1.00015,1.00001,1.00028,0.99996,1.00377,1.02281,0.09581]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 1		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 42		 42		 4	 |	 1		 1		 --
+mvtarget	 59		 59		 2	 |	 0		 0		 --
+chdir		 40		 40		 3	 |	 2		 2		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 43		 28		 0	 |	 1		 1		 --
+Total		 185		 170		 10	 |	 4		 4		 3
+Proportion	 -- 		 1.0		 0.1	 |	 -- 		 1.0		 0.8
+
+ FINISHED SNaQ for run 24, -loglik of best 0.006191098845348906
+(9,8,((7,(((13,12):1.00004424018913,(11,#H18:::0.10007087859928764):0.9940488014009558):0.9999821434570665,((14,((15,1):1.0001518584444555,(((6,(5,(#H1:0.09580552755434449::0.09996287207317428,4):1.003767747546022):0.9996936421227419):1.0000831113797557,((3,2):1.0228090951808866)#H1:0.9666121075684407::0.9000371279268258):1.0273690634576285)#H17:0.9658452929447975::0.8999987333440007):0.9997861095823799):0.9972940093021468,#H17:0.07485333280829459::0.10000126665599926):1.002196959482909):1.0000108011867834):1.0002763490075839,(10)#H18:::0.8999291214007124):0.9999592478244568);
+---------------------
+seed: 72437 for run 25
+Thu 02 Feb 2017 03:06:19 AM CST
+
+ BEGIN SNaQ for run 25, seed 72437 and hmax 3
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 144 (failures: 100) with -loglik=37.33758 and ht_min=[0.10011,0.09963,0.07413,1.00052,0.9935,1.00001,1.00061,0.96279,0.20863,1.7822,1.05022,1.00798,0.99869,1.0054,2.47551,0.99563,0.99958,1.00066,1.00049,0.0,1.11359,1.55238]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 2		 2		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 43		 43		 1	 |	 0		 0		 --
+mvtarget	 45		 45		 0	 |	 0		 0		 --
+chdir		 22		 22		 1	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 32		 22		 0	 |	 0		 0		 --
+Total		 144		 134		 3	 |	 0		 0		 0
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 0.0		 0.0
+
+ FINISHED SNaQ for run 25, -loglik of best 37.337581887537155
+(9,8,((7,(((13,12):1.0005227608839005,(11,#H18:::0.10010950629883614):0.9935006187856207):1.0000148312091663,((14,((15,1):1.0006094116258104,(((6,((4,5):0.20862779894709751)#H1:1.1135873263760498::0.9258730844950449):0.9627942650815862,(3,(2,#H1:1.5523762841945672::0.07412691550495511):0.0):1.7821993458368863):1.0502236095364579)#H17:1.0079756653392558::0.9003707975167072):0.998686353225545):1.00539648446304,#H17:2.475506980434498::0.09962920248329281):0.9956334747416047):0.9995828943925718):1.0006592798866834,(10)#H18:::0.8998904937011638):1.0004871562143953);
+---------------------
+seed: 73654 for run 26
+Thu 02 Feb 2017 07:57:17 AM CST
+
+ BEGIN SNaQ for run 26, seed 73654 and hmax 3 changed starting topology by NNI move
+
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 125 (failures: 100) with -loglik=79.78159 and ht_min=[0.09989,0.10138,0.11268,1.00023,1.02883,0.99993,0.99892,0.82818,0.63411,0.0,1.63532,1.02105,1.00377,0.9909,2.08455,1.0079,1.00022,0.99957,0.99979,1.36792,0.02644,5.43982]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 6		 6		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 36		 36		 0	 |	 0		 0		 --
+mvtarget	 37		 37		 0	 |	 0		 0		 --
+chdir		 19		 18		 0	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 27		 20		 0	 |	 1		 1		 --
+Total		 125		 117		 1	 |	 1		 1		 1
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 1.0		 1.0
+
+ FINISHED SNaQ for run 26, -loglik of best 79.78159148060635
+(9,8,((7,(((13,12):1.000226796179803,(11,#H18:::0.09989246552685534):1.0288333386037445):0.9999261027996167,((14,((15,1):0.9989150808674437,((((6,(4,5):0.8281828813635425):0.6341091583942028,((2,3):1.635324505181516)#H1:0.02643797919372704::0.8873167950381644):1.3679217680729159,#H1:5.439821989608575::0.11268320496183559):0.0)#H17:1.0210547174043965::0.8986181937565951):1.003767073270566):0.9909007887876364,#H17:2.0845519824527226::0.10138180624340488):1.0078965000528337):1.0002171724572737):0.9995747487008219,(10)#H18:::0.9001075344731446):0.9997919617978689);
+---------------------
+seed: 88521 for run 27
+Thu 02 Feb 2017 11:19:42 AM CST
+
+ BEGIN SNaQ for run 27, seed 88521 and hmax 3 changed starting topology by NNI move
+
+ changed starting network by move origin
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 153 (failures: 100) with -loglik=67.51243 and ht_min=[0.10094,0.06524,0.10801,1.00266,0.90556,0.99979,1.04805,1.79455,0.76429,0.99019,1.4965,0.00025,0.14441,0.92734,1.90212,0.01045,1.00242,1.00696,0.99804,0.97691,0.13928,0.00192]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 3		 3		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 44		 44		 1	 |	 0		 0		 --
+mvtarget	 45		 43		 0	 |	 0		 0		 --
+chdir		 23		 20		 2	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 38		 23		 0	 |	 2		 2		 --
+Total		 153		 133		 4	 |	 2		 2		 2
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 1.0		 1.0
+
+ FINISHED SNaQ for run 27, -loglik of best 67.51242670579698
+(4,5,(((3,2):1.4965016037569092,((((15,1):1.0480481718298604,(14,((((13,12):1.0026600089894777,(11,#H18:::0.10093800379637931):0.905555439444182):0.9997870822004254,(7,((10)#H18:::0.8990619962036207,(9,8):0.9980404591283483):1.0069598078755322):1.002418984511165):1.7945507666810891)#H17:0.1444066712236313::0.9347580696100393):0.9273424308392557):1.902121222443294,#H17:0.010454601682220328::0.06524193038996078):0.13927575798728561)#H1:0.0002525592518844002::0.8919863519159348):0.9901885276201692,(#H1:0.0019221515316091777::0.10801364808406523,6):0.9769092133326341):0.7642866868230612);
+---------------------
+seed: 72292 for run 28
+Thu 02 Feb 2017 02:57:52 PM CST
+
+ BEGIN SNaQ for run 28, seed 72292 and hmax 3
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 208 (failures: 100) with -loglik=34.78349 and ht_min=[0.10004,0.1002,0.06675,1.00009,0.9957,0.99983,1.00015,1.6402,1.0929,0.83746,1.0779,1.01531,1.00064,0.99878,2.46485,1.001,1.00008,1.00002,0.99998,0.02504]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 1		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 50		 50		 4	 |	 0		 0		 --
+mvtarget	 57		 57		 0	 |	 0		 0		 --
+chdir		 41		 41		 1	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 59		 43		 0	 |	 0		 0		 --
+Total		 208		 192		 6	 |	 0		 0		 0
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 0.0		 0.0
+
+ FINISHED SNaQ for run 28, -loglik of best 34.783485096601694
+(9,8,((7,(((13,12):1.0000907705578141,(11,#H18:::0.10003678312134148):0.9957013642192033):0.9998306991001399,((14,((15,1):1.0001524555989838,(((6,(5,(4)#H1:::0.9332473739212064):1.0928955265382179):0.8374598336465459,((3,2):0.025037470651485396,#H1:::0.06675262607879359):1.6401994723392108):1.0779009333913887)#H17:1.015314005414663::0.8998005381764296):1.0006381892769816):0.9987811181303983,#H17:2.464847041177004::0.10019946182357044):1.0010034490693782):1.0000765873694222):1.0000206252062485,(10)#H18:::0.8999632168786585):0.9999774460435435);
+---------------------
+seed: 81796 for run 29
+Thu 02 Feb 2017 07:48:55 PM CST
+
+ BEGIN SNaQ for run 29, seed 81796 and hmax 3
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 116 (failures: 100) with -loglik=66.88399 and ht_min=[0.1,0.09985,0.09621,1.00001,0.99962,0.99998,1.00019,0.51938,0.71116,0.92006,1.56027,1.01839,0.9998,1.00205,3.33241,0.99822,1.0,1.00003,1.00004,0.61639]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 1		 1		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 32		 32		 0	 |	 0		 0		 --
+mvtarget	 37		 37		 0	 |	 0		 0		 --
+chdir		 18		 15		 0	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 28		 18		 0	 |	 0		 0		 --
+Total		 116		 103		 1	 |	 0		 0		 0
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 0.0		 0.0
+
+ FINISHED SNaQ for run 29, -loglik of best 66.88399078974568
+(9,8,((7,(((13,12):1.0000143852896832,(11,#H18:::0.10000438439182252):0.9996245455649501):0.9999790369489626,((14,((15,1):1.0001943500168866,(((((4,5):0.711157171092354,(6)#H1:::0.9037888538083007):0.9200564509552108,(3,2):1.5602717735570288):0.6163949159518314,#H1:::0.09621114619169932):0.5193830224025876)#H17:1.018391727183069::0.9001477519222104):0.9998038225055716):1.0020472972298073,#H17:3.332405985420385::0.09985224807778957):0.9982247251600163):0.9999983066748223):1.000032109739749,(10)#H18:::0.8999956156081774):1.0000398354133126);
+---------------------
+seed: 39135 for run 30
+Thu 02 Feb 2017 10:51:21 PM CST
+
+ BEGIN SNaQ for run 30, seed 39135 and hmax 3 changed starting topology by NNI move
+
+ changed starting network by move origin
+Begins heuristic optimization of network------
+
+found best network, now we re-optimize branch lengths and gamma more precisely
+STOPPED by number of failures criteria
+END optTopLevel: found minimizer topology at step 163 (failures: 100) with -loglik=34.36854 and ht_min=[0.09943,0.10348,0.13398,0.99961,1.04374,1.00153,0.99744,0.5786,0.88509,1.0901,1.00772,1.10754,1.00675,0.94706,7.71073,1.04373,0.9994,0.99815,1.00009,0.79642,0.73158,0.00028]
+PERFORMANCE: total number of moves (proposed, successful, accepted) in general, and to fix gamma=0.0,t=0.0 cases
+	--------moves general--------				 --------moves gamma,t------	
+move	 Num.Proposed	 Num.Successful	 Num.Accepted	 | Num.Proposed	 Num.Successful	 Num.Accepted
+add		 2		 2		 1	 |	 NA 		 NA 		 NA 
+mvorigin	 44		 44		 2	 |	 0		 0		 --
+mvtarget	 48		 48		 0	 |	 0		 0		 --
+chdir		 27		 27		 0	 |	 0		 0		 --
+delete		 0		 0		 0	 |	 0		 0		 --
+nni		 42		 20		 0	 |	 5		 5		 --
+Total		 163		 141		 3	 |	 5		 5		 5
+Proportion	 -- 		 1.0		 0.0	 |	 -- 		 1.0		 1.0
+
+ FINISHED SNaQ for run 30, -loglik of best 34.36853871044323
+(9,8,((7,(((14,((15,1):0.997436284267961,(((6,((4,5):0.578596760109522)#H1:0.7315755974874381::0.8660236371828504):1.0900953965930527,((2,3):0.88508663903941,#H1:0.0002772560130599271::0.1339763628171496):0.7964224973671151):1.007718228919219)#H17:1.1075438262393302::0.8965214963396531):1.0067540894273734):0.9470557925918509,#H17:7.710732320764713::0.1034785036603469):1.043733387389443,((11,#H18:::0.09943184222020869):1.043737185272936,(13,12):1.0015302099116947):0.999611734123972):0.9993961535382918):0.9981503845004716,(10)#H18:::0.9005681577797913):1.0000863535490834);
+---------------------
+
+Fri 03 Feb 2017 02:51:44 AM CST
+MaxNet is (9,8,((7,(((13,12):1.00004424018913,(11,#H18:::0.10007087859928764):0.9940488014009558):0.9999821434570665,((14,((15,1):1.0001518584444555,(((6,(5,(#H1:0.09580552755434449::0.09996287207317428,4):1.003767747546022):0.9996936421227419):1.0000831113797557,((3,2):1.0228090951808866)#H1:0.9666121075684407::0.9000371279268258):1.0273690634576285)#H17:0.9658452929447975::0.8999987333440007):0.9997861095823799):0.9972940093021468,#H17:0.07485333280829459::0.10000126665599926):1.002196959482909):1.0000108011867834):1.0002763490075839,(10)#H18:::0.8999291214007124):0.9999592478244568); 
+with -loglik 0.006191098845348906
