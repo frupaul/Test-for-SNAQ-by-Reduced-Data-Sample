@@ -1,18 +1,18 @@
 # Julia script to run SNaQ! on a test data set with 4 input parameters:
-# The name of the partition jobs sent to
+# The name of the dataset sent to
 # - a number of hybridizations
 # - a number of total runs
 # - a integer representing the ID number of one specific combination of parameters for each slurm task
 
 # Read the 4 input parameters for this Julia script.
 # If the user did not input all three parameters,
-# The name of the partition will be default to be long,
+# The name of the dataset will be default to be long,
 # the hybridization number will be default to be 0,
 # number of runs will defaultly be set as 1,
 # and the id number will be 0.
 
 if(length(ARGS)<3)
-    partition = "long";
+    dataset = "perfect";
     h = 0;
     Runs = 1;
     id = 0;
@@ -62,15 +62,15 @@ end
 FTA, NF, Ratio, XTR, XTA = comb(id)
 LTA = FTA*Ratio;
 
-    if partition == "long"
+    if dataset == "perfect"
 
-        dataset = "perfect";
+        partition = "Marzano";
         scalar = 1;
         tableCF = readTableCF("tableCF.txt");# read the input CFtable file
 
-    elseif partition == "darwin"
+    elseif dataset == "est300"
 
-        dataset = "est300";
+        partition = "darwin";
         scalar = 2;
         tableCF = readTableCF("1_seqgen.CFs.csv");
 
