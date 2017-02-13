@@ -6,4 +6,4 @@
 #SBATCH -p darwin
 export JULIA_PKGDIR="/workspace/nanji/.julia"
 echo $(hostname)
-/usr/bin/julia /workspace/nanji/oneSnaqH.jl darwin 3 30 $SLURM_ARRAY_TASK_ID
+/usr/bin/julia /workspace/nanji/oneSnaqH.jl est300 3 30 $SLURM_ARRAY_TASK_ID
