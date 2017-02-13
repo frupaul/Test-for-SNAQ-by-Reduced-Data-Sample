@@ -124,7 +124,7 @@ for i in fileNames[1:end]
     push!(parameterInfoList,parameterInfo); # Save the parameter array of one file into the arrayList
 
     run = run + parse(Int,parameterInfo[8]);
-
+    # println(run);
     # Look for all the information we need for each run in one log file.
 
     seed = Array{String}(parse(Int,parameterInfo[8]));
