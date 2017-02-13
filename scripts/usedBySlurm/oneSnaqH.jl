@@ -17,7 +17,7 @@ if(length(ARGS)<3)
     Runs = 1;
     id = 0;
 else
-    partition = ARGS[1];
+    dataset = ARGS[1];
     h = parse(Int, ARGS[2]);
     Runs = parse(Int, ARGS[3]);
     id = parse(Int, ARGS[4]);
