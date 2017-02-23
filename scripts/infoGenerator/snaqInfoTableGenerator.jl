@@ -220,29 +220,33 @@ for i in 2:length(fileNames)
 
 end
 
-#if length(ARGS) > 1
+if length(ARGS) > 1
 
-#    trueNet = readTopology(realTopo); # read the true topology
-#    rootAtNode = "15";
+    trueNet = readTopology(realTopo); # read the true topology
+    rootAtNode = "15";
 
     # The loop will save 1 when the result topology is the same to the true topology,
     # otherwise it will save 0.
 
-#    for i in 1:length(sameToBestTopology)
+    for i in 1:length(sameToBestTopology)
 
-#        topologyCompare = readTopology(topo[i]);
-#        rootatnode!(topologyCompare,rootAtNode);
-#        dist = hardwiredClusterDistance(trueNet, topologyCompare, true);
-#        sameToBestTopology[i] = (dist == 0) ? 1:0;
+        try
+            topologyCompare = readTopology(topo[i]);
+            rootatnode!(topologyCompare,rootAtNode);
+            dist = hardwiredClusterDistance(trueNet, topologyCompare, true);
+            sameToBestTopology[i] = (dist == 0) ? 1:0;
+        catch
 
-#    end
+        end
 
-#end
+    end
+
+end
 
 # Generate the DataFrame and write it into a csv file.
 
 df = DataFrame(comboName=combineName,Hmax=Hmax,Nfail=Nfail,FtolRel=ftolRel,FtolAbs=ftolAbs,XtolAbs=xtolAbs,
-               XtolRel=xtolRel,LiktolAbs=liktolAbs,Seed=seed,Loglik=loglik,RunTime=runTime);
+               XtolRel=xtolRel,LiktolAbs=liktolAbs,Seed=seed,Loglik=loglik,RunTime=runTime,TrueTopo=sameToBestTopology);
 writetable("output.csv",df)
 
 # SameToBestTopology=sameToBestTopology
