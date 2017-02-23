@@ -87,3 +87,5 @@ Also, keep in mind Mike's option:
 `#SBATCH --qos unlimitedcpu`
 
 4. Summarize and plot the results of perfect data
+
+**Debug** Create folder with input files and commands to reproduce bugs!!
