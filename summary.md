@@ -88,4 +88,18 @@ Also, keep in mind Mike's option:
 
 4. Summarize and plot the results of perfect data
 
+5. Summarize and plot the results of perfect data
+
 **Debug** Create folder with input files and commands to reproduce bugs!!
+
+## Summary of results
+
+**Write down here the name of scripts and use**
+
+We get a table with one row per scenario, and different columns like median loglik, number of runs (out of 30) that estimate the true topology, median time, and accuracy (probability of having at least one successful run out of the 10 default runs).
+
+Nan will write some scripts for some plots, and will try to publish as html with labels to the points. In particular, we want to see a plot of time vs accuracy (with points with different color based on `Nfail`, or other arguments). We can also sort the table by accuracy, and identify the scenarios with high accuracy and lower time.
+
+We want to compare the results between perfect and estimated data.
+
+Ultimately, it would be nice to have a table in the SNaQ documentation with a few scenarios (one row per scenario, first row default parameters), and the parameters as columns, along with two measures: time and accuracy (as above described). In each scenario, we can write the reduction in time and accuracy compared to the default. This will allow users to choose parameters.
