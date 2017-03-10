@@ -121,6 +121,20 @@ for i in fileNames[1:end]
     parameterInfo[7] = readstring(pipeline(`grep -Eo "liktolAbs =.*" $i`, `sed -E 's/liktolAbs = (.*)\./\1/'`)); # Find liktolAbs
     parameterInfo[8] = readstring(pipeline(`grep -Eo "BEGIN: .*" $i`, `sed -E 's/BEGIN: (.*) run.*/\1/'`)); # Find number of runs
 
+    err = 0;
+    errNum = 0;
+    try
+        err = readstring(`grep -e "Error" $i`);
+    catch
+    end
+
+    if err != 0
+        err = parse(Int,split(err)[7]);
+        errNum = 1;
+    end
+
+    parameterInfo[8] = string(parse(Int,parameterInfo[8])-errNum);
+
     push!(parameterInfoList,parameterInfo); # Save the parameter array of one file into the arrayList
 
     run = run + parse(Int,parameterInfo[8]);
@@ -129,7 +143,21 @@ for i in fileNames[1:end]
 
     seed = Array{String}(parse(Int,parameterInfo[8]));
     mainseed = readstring(pipeline(`grep -Eo "main seed.*" $i`, `sed -E 's/main seed (.*)/\1/'`)); # Grab the main seed for repeating same running
-    seed = split(readstring(pipeline(`grep -Eo "seed:.*" $i`,`sed -E 's/seed: (.*) for.*/\1/'`))); # Store the seed of each run
+    seedAll = split(readstring(pipeline(`grep -Eo "seed:.*" $i`,`sed -E 's/seed: (.*) for.*/\1/'`)));
+    # Store the seed of each run
+    if err != 0
+        if err == 1
+            seed = seedAll[(err+1):length(seedAll)];
+        elseif err == length(seed)+1
+            seed = seedAll[1:length(seed)];
+        else
+            seed[1:(err-1)] = seedAll[1:(err-1)];
+            seed[err:length(seed)] = seedAll[(err+1):length(seedAll)];
+        end
+    else
+        seed = seedAll;
+    end
+
     push!(runSeed,seed); # Save the seed into the arrayList
 
     loglik = Array{String}(parse(Int,parameterInfo[8]));
@@ -148,9 +176,9 @@ for i in fileNames[1:end]
 
     # Save the info of time in each run.
 
-    runTime = Array{String}(parse(Int, parameterInfo[8])+1);
+    runTime = Array{String}(parse(Int, parameterInfo[8])+errNum+1);
     runTimeLine = split(readstring(`grep -A 1 "seed:.*" $i`),"\n");
-    for k in 1:parse(Int, parameterInfo[8])
+    for k in 1:(parse(Int, parameterInfo[8])+errNum)
         runTime[k] = runTimeLine[3*k-1];
     end
     endTimeLine = split(readstring(`grep -B 1 "MaxNet is.*" $i`),"\n");
@@ -159,8 +187,13 @@ for i in fileNames[1:end]
     # Count the time used for each run.
 
     runTimeNum = Array{Float64}(parse(Int, parameterInfo[8]));
+    numJ = 1;
     for j in 1:length(runTimeNum)
-        runTimeNum[j] = eachRunTimeSummary(runTime[j],runTime[j+1]);
+        if j == err
+            numJ = j+1;
+        end
+        runTimeNum[j] = eachRunTimeSummary(runTime[numJ],runTime[numJ+1]);
+        numJ = numJ + 1;
     end
 
     push!(runTimeList,runTimeNum); # Save the time info of runs in each file
@@ -192,19 +225,20 @@ runTime = runTimeList[1];
 
 # Repetitively set the parameters for each run.
 
+r = 0;
 for i in 1:length(parameterInfoList)
     for j in 1:parse(Int,parameterInfoList[i][8])
 
-        r = parse(Int,parameterInfoList[i][8]);
-        Hmax[(i-1)*r+j] = parse(Int, parameterInfoList[i][1]);
-        Nfail[(i-1)*r+j] = parse(Int, parameterInfoList[i][6]);
-        ftolRel[(i-1)*r+j] = parse(Float64, parameterInfoList[i][2]);
-        ftolAbs[(i-1)*r+j] = parse(Float64, parameterInfoList[i][3]);
-        xtolAbs[(i-1)*r+j] = parse(Float64, parameterInfoList[i][4]);
-        xtolRel[(i-1)*r+j] = parse(Float64, parameterInfoList[i][5]);
-        liktolAbs[(i-1)*r+j] = parse(Float64, parameterInfoList[i][7]);
-        combineName[(i-1)*r+j] = string(Hmax[(i-1)*r+j],Nfail[(i-1)*r+j],ftolRel[(i-1)*r+j],
-                                        ftolAbs[(i-1)*r+j],xtolAbs[(i-1)*r+j],xtolRel[(i-1)*r+j],liktolAbs[(i-1)*r+j]);
+        r = r + 1;
+        Hmax[r] = parse(Int, parameterInfoList[i][1]);
+        Nfail[r] = parse(Int, parameterInfoList[i][6]);
+        ftolRel[r] = parse(Float64, parameterInfoList[i][2]);
+        ftolAbs[r] = parse(Float64, parameterInfoList[i][3]);
+        xtolAbs[r] = parse(Float64, parameterInfoList[i][4]);
+        xtolRel[r] = parse(Float64, parameterInfoList[i][5]);
+        liktolAbs[r] = parse(Float64, parameterInfoList[i][7]);
+        combineName[r] = string(Hmax[r],Nfail[r],ftolRel[r],
+                                ftolAbs[r],xtolAbs[r],xtolRel[r],liktolAbs[r]);
 
     end
 end
