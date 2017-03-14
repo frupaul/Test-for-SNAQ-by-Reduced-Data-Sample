@@ -62,11 +62,7 @@ We did not run in `darwin` machines, because we cannot control using only `darwi
 
 `Slurm` has a limit of 48 nodes per user (24 if using R or julia). Mike C. has mentioned that he can remove this restriction for future analyses so that Nan can use 96 nodes. Mike C. also has plans to create a specific partition for `darwin02-06`. Mike C. did this already, and `#SBATCH -p darwin` uses only `darwin02-06`.
 
-Action items:
-
-1. Also, create a README file with information on the scripts to summarize the output files (in julia and R).
-
-2. Wait for the remaining runs for perfect data (should be finished within a week).
+This has been done already by Nan:
 
 1. Write a shell script to rename all log and out file from the 60 prior runs: add “marzano” to these file names. Also perhaps add “perfect” to refer to the input data for these runs.
 
@@ -86,15 +82,10 @@ The same starting networks could be used as for the perfect data. These runs wil
 Also, keep in mind Mike's option:
 `#SBATCH --qos unlimitedcpu`
 
-4. Summarize and plot the results of perfect data
 
-5. Summarize and plot the results of perfect data
-
-**Debug** Create folder with input files and commands to reproduce bugs!!
+4. **Debug** Create folder with input files and commands to reproduce bugs!!
 
 ## Summary of results
-
-**Write down here the name of scripts and use**
 
 We get a table with one row per scenario, and different columns like median loglik, number of runs (out of 30) that estimate the true topology, median time, and accuracy (probability of having at least one successful run out of the 10 default runs).
 
@@ -103,3 +94,13 @@ Nan will write some scripts for some plots, and will try to publish as html with
 We want to compare the results between perfect and estimated data.
 
 Ultimately, it would be nice to have a table in the SNaQ documentation with a few scenarios (one row per scenario, first row default parameters), and the parameters as columns, along with two measures: time and accuracy (as above described). In each scenario, we can write the reduction in time and accuracy compared to the default. This will allow users to choose parameters.
+
+Action items:
+
+1. Create a README file with information on the scripts to summarize the output files (in julia and R), add the scripts to produce the plots
+
+2. Add the new bugs to the debug folder to reproduce
+
+3. Create a table comparing the default to other good combinations that reduce time, and don't reduce accuracy (or only slightly)
+
+4. Warning with likTolAbs? 
