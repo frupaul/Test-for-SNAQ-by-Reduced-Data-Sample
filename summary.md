@@ -104,3 +104,22 @@ Action items:
 3. Create a table comparing the default to other good combinations that reduce time, and don't reduce accuracy (or only slightly)
 
 4. Warning with likTolAbs? 
+
+5. Select a few good combinations (10 or so?), candidates for the new default.
+   These combinations could be tested more thoroughly (more than 30 runs), and on a
+   different data set, to narrow down the choice to a single best combination that
+   will be used as the new default.
+
+Sub-action items to complete item 3 above (3/17):
+
+- check files on estimated gene trees, that have the correct topology but poor score,
+  and check files / runs that got a bad topology but excellent score.
+- change the criterion to measure accuracy: instead of using "correct topology", use "score below x".
+  x=555 looks like a good choice for the estimated gene trees.
+  A "good run" would be a run whose score below x.
+- run multiple logistic regression on y=1 (good run) or 0 (not a good run).
+  exclude Nfail=25 and exclude liktolAbs=100 for this analysis.
+  use the data set that has 1 row per run.
+  Do not include any interaction terms first, to "smooth" the results.
+- run multi-way ANOVA on y = mean time, also using the data set that has 1 row per run
+  (to get an estimate of variance in CPU time between runs within the same combination).
