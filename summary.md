@@ -99,11 +99,9 @@ Action items:
 
 1. Create a README file with information on the scripts to summarize the output files (in julia and R), add the scripts to produce the plots
 
-2. Add the new bugs to the debug folder to reproduce
-
 3. Create a table comparing the default to other good combinations that reduce time, and don't reduce accuracy (or only slightly)
 
-4. Warning with likTolAbs? 
+4. Warning with likTolAbs? likTolAbs=100 does not make sense
 
 5. Select a few good combinations (10 or so?), candidates for the new default.
    These combinations could be tested more thoroughly (more than 30 runs), and on a
@@ -123,3 +121,74 @@ Sub-action items to complete item 3 above (3/17):
   Do not include any interaction terms first, to "smooth" the results.
 - run multi-way ANOVA on y = mean time, also using the data set that has 1 row per run
   (to get an estimate of variance in CPU time between runs within the same combination).
+
+## Some results after meeting (3/31/2017)
+Nan studied the runs that had loglik below a certain threshold, and whether those runs coincided with having the true topology.
+- For estimated data, the runs with loglik<=500 all have the true topology, the runs with loglik<=555, 89% have the true topology. Actually, 97% of runs with the true topology have loglik<=555.
+- For perfect data, the runs with loglik<=5, all have the true topology; runs with loglik<=10, 93% have the true topology. Actually, 94% of the runs with the true topology have a loglik<=10
+
+**Questions**
+- Do we still want to change the definition of "good run": score below x, or keep correct topology?
+
+### Logistic regression results
+Using now, "good run"= correct topology. Excluding Nfail=25,and likTolAbs=100.
+
+Perfect data:
+```
+Call:
+glm(formula = TrueTopo ~ Nfail + FtolAbs + XtolAbs + XtolRel +
+    LiktolAbs, family = "binomial", data = info)
+
+Deviance Residuals:
+    Min       1Q   Median       3Q      Max  
+-1.0537  -0.9021  -0.7813   1.3666   1.9594  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -1.327e+00  1.298e-01 -10.224  < 2e-16 ***
+Nfail        1.038e-02  1.516e-03   6.849 7.46e-12 ***
+FtolAbs     -5.791e+01  9.790e+00  -5.915 3.33e-09 ***
+XtolAbs     -1.293e+02  6.167e+01  -2.096   0.0361 *  
+XtolRel     -9.297e+00  6.844e+00  -1.358   0.1743    
+LiktolAbs   -6.730e-02  1.365e-02  -4.930 8.22e-07 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 6244.8  on 5037  degrees of freedom
+Residual deviance: 6126.5  on 5032  degrees of freedom
+AIC: 6138.5
+
+Number of Fisher Scoring iterations: 4
+```
+
+Estimated data:
+```
+Call:
+glm(formula = TrueTopo ~ Nfail + FtolAbs + XtolAbs + XtolRel +
+    LiktolAbs, family = "binomial", data = info)
+
+Deviance Residuals:
+    Min       1Q   Median       3Q      Max  
+-0.9385  -0.8517  -0.7735   1.4507   1.7725  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  -1.490121   0.131914 -11.296  < 2e-16 ***
+Nfail         0.008676   0.001532   5.664 1.48e-08 ***
+FtolAbs     -18.820774   9.361006  -2.011   0.0444 *  
+XtolAbs     -96.435490  62.373412  -1.546   0.1221    
+XtolRel       3.089989   6.922120   0.446   0.6553    
+LiktolAbs     0.001557   0.012129   0.128   0.8979    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 6073.3  on 5038  degrees of freedom
+Residual deviance: 6034.3  on 5033  degrees of freedom
+AIC: 6046.3
+
+Number of Fisher Scoring iterations: 4
+```
