@@ -219,6 +219,7 @@ combineName = Array{String}(run);
 
 seed = runSeed[1];
 sameToBestTopology = Array{Int}(run);
+distCol = Array{Int}(run);
 topo = runTopology[1];
 loglik = runLoglik[1];
 runTime = runTimeList[1];
@@ -268,6 +269,7 @@ if length(ARGS) > 1
             topologyCompare = readTopology(topo[i]);
             rootatnode!(topologyCompare,rootAtNode);
             dist = hardwiredClusterDistance(trueNet, topologyCompare, true);
+            distCol[i] = dist;
             sameToBestTopology[i] = (dist == 0) ? 1:0;
         catch
 
@@ -280,7 +282,7 @@ end
 # Generate the DataFrame and write it into a csv file.
 
 df = DataFrame(comboName=combineName,Hmax=Hmax,Nfail=Nfail,FtolRel=ftolRel,FtolAbs=ftolAbs,XtolAbs=xtolAbs,
-               XtolRel=xtolRel,LiktolAbs=liktolAbs,Seed=seed,Loglik=loglik,RunTime=runTime,TrueTopo=sameToBestTopology);
+               XtolRel=xtolRel,LiktolAbs=liktolAbs,Seed=seed,Loglik=loglik,RunTime=runTime,TrueTopo=sameToBestTopology, Dist = distCol);
 writetable("output.csv",df)
 
 # SameToBestTopology=sameToBestTopology
