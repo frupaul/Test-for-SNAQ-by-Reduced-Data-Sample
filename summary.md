@@ -129,10 +129,10 @@ Nan studied the runs that had loglik below a certain threshold, and whether thos
 
 **Questions**
 - Do we still want to change the definition of "good run": score below x, or keep correct topology?
-Yes, we want to identify a "good run" as a run in which the correct topology would be selected as the estimated topology. For perfect data, this seems to be the case with loglik<8. We need to define a threshold for estimated data **missing**.
+Yes, we want to identify a "good run" as a run in which the correct topology would be selected as the estimated topology. For perfect data, this seems to be the case with loglik<8. For estimated data, it seems that it will be with loglik<500.
 
 ### Logistic regression results
-Using now, "good run"= correct topology. Excluding Nfail=25,and likTolAbs=100.
+- Using now, "good run"= correct topology. Excluding Nfail=25,and likTolAbs=100.
 
 Perfect data:
 ```
@@ -193,6 +193,9 @@ AIC: 6046.3
 
 Number of Fisher Scoring iterations: 4
 ```
+Overall, it seems that `Nfail` and `ftolAbs` are variables that affect the performance of a snaq run.
 
-**To do:**
-Need to fit a logistic regression with the new definition of "good run" for perfect and estimated data. Also, do ANOVA. See below.
+- Now we use a different definition of "good run". For perfect data, a "good run" is a run that has loglik<=8 (loglik<=30 for a "relatively good run"), and for estimated data, a "good run" is a run that has a loglik<=500 (loglik<=550 for a "relatively good run").
+
+- **Next steps:** Do a multi-way ANOVA on y = mean time, also using the data set that has 1 row per run
+  (to get an estimate of variance in CPU time between runs within the same combination).
