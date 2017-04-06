@@ -218,8 +218,8 @@ combineName = Array{String}(run);
 # Initialize the array so that it could be easy to combine in for loop.
 
 seed = runSeed[1];
-sameToBestTopology = Array{Int}(run);
-distCol = Array{Int}(run);
+sameToBestTopology = fill(-1,run);
+distCol = fill(-1,run);
 topo = runTopology[1];
 loglik = runLoglik[1];
 runTime = runTimeList[1];
@@ -265,13 +265,18 @@ if length(ARGS) > 1
 
     for i in 1:length(sameToBestTopology)
 
+        topologyCompare = readTopology(topo[i]);
+
         try
-            topologyCompare = readTopology(topo[i]);
             rootatnode!(topologyCompare,rootAtNode);
             dist = hardwiredClusterDistance(trueNet, topologyCompare, true);
             distCol[i] = dist;
             sameToBestTopology[i] = (dist == 0) ? 1:0;
+
         catch
+
+            distCol[i] = 10000;
+            sameToBestTopology[i] = 0;
 
         end
 
