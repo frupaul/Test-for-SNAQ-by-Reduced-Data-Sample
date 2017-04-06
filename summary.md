@@ -129,6 +129,7 @@ Nan studied the runs that had loglik below a certain threshold, and whether thos
 
 **Questions**
 - Do we still want to change the definition of "good run": score below x, or keep correct topology?
+Yes, we want to identify a "good run" as a run in which the correct topology would be selected as the estimated topology. For perfect data, this seems to be the case with loglik<8. We need to define a threshold for estimated data **missing**.
 
 ### Logistic regression results
 Using now, "good run"= correct topology. Excluding Nfail=25,and likTolAbs=100.
@@ -192,3 +193,6 @@ AIC: 6046.3
 
 Number of Fisher Scoring iterations: 4
 ```
+
+**To do:**
+Need to fit a logistic regression with the new definition of "good run" for perfect and estimated data. Also, do ANOVA. See below.
