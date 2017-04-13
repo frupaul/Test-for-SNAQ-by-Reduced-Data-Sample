@@ -197,5 +197,8 @@ Overall, it seems that `Nfail` and `ftolAbs` are variables that affect the perfo
 
 - Now we use a different definition of "good run". For perfect data, a "good run" is a run that has loglik<=8 (loglik<=30 for a "relatively good run"), and for estimated data, a "good run" is a run that has a loglik<=500 (loglik<=550 for a "relatively good run").
 
-- **Next steps:** Do a multi-way ANOVA on y = mean time, also using the data set that has 1 row per run
-  (to get an estimate of variance in CPU time between runs within the same combination).
+**Next steps:**
+
+- Identify the variables to keep in the model for probability of good run and the model for time (try to keep the same ones for the plots)
+
+- Predict the probability (and then accuracy) and time with the models, and redo the plot of accuracy vs time, but now instead of the observed values of accuracy and time, we use the predicted values of accuracy and time (so the plot is smooth now)
