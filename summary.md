@@ -141,16 +141,16 @@ glm(formula = TrueTopo ~ Nfail + FtolAbs + XtolAbs + XtolRel +
     LiktolAbs, family = "binomial", data = info)
 
 Deviance Residuals:
-    Min       1Q   Median       3Q      Max  
--1.0537  -0.9021  -0.7813   1.3666   1.9594  
+    Min       1Q   Median       3Q      Max
+-1.0537  -0.9021  -0.7813   1.3666   1.9594
 
 Coefficients:
-              Estimate Std. Error z value Pr(>|z|)    
+              Estimate Std. Error z value Pr(>|z|)
 (Intercept) -1.327e+00  1.298e-01 -10.224  < 2e-16 ***
 Nfail        1.038e-02  1.516e-03   6.849 7.46e-12 ***
 FtolAbs     -5.791e+01  9.790e+00  -5.915 3.33e-09 ***
-XtolAbs     -1.293e+02  6.167e+01  -2.096   0.0361 *  
-XtolRel     -9.297e+00  6.844e+00  -1.358   0.1743    
+XtolAbs     -1.293e+02  6.167e+01  -2.096   0.0361 *
+XtolRel     -9.297e+00  6.844e+00  -1.358   0.1743
 LiktolAbs   -6.730e-02  1.365e-02  -4.930 8.22e-07 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
@@ -171,17 +171,17 @@ glm(formula = TrueTopo ~ Nfail + FtolAbs + XtolAbs + XtolRel +
     LiktolAbs, family = "binomial", data = info)
 
 Deviance Residuals:
-    Min       1Q   Median       3Q      Max  
--0.9385  -0.8517  -0.7735   1.4507   1.7725  
+    Min       1Q   Median       3Q      Max
+-0.9385  -0.8517  -0.7735   1.4507   1.7725
 
 Coefficients:
-              Estimate Std. Error z value Pr(>|z|)    
+              Estimate Std. Error z value Pr(>|z|)
 (Intercept)  -1.490121   0.131914 -11.296  < 2e-16 ***
 Nfail         0.008676   0.001532   5.664 1.48e-08 ***
-FtolAbs     -18.820774   9.361006  -2.011   0.0444 *  
-XtolAbs     -96.435490  62.373412  -1.546   0.1221    
-XtolRel       3.089989   6.922120   0.446   0.6553    
-LiktolAbs     0.001557   0.012129   0.128   0.8979    
+FtolAbs     -18.820774   9.361006  -2.011   0.0444 *
+XtolAbs     -96.435490  62.373412  -1.546   0.1221
+XtolRel       3.089989   6.922120   0.446   0.6553
+LiktolAbs     0.001557   0.012129   0.128   0.8979
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
@@ -197,7 +197,7 @@ Overall, it seems that `Nfail` and `ftolAbs` are variables that affect the perfo
 
 - Now we use a different definition of "good run". For perfect data, a "good run" is a run that has loglik<=8 (loglik<=30 for a "relatively good run"), and for estimated data, a "good run" is a run that has a loglik<=500 (loglik<=550 for a "relatively good run").
 
-**Next steps:**
+**Final steps to identify the new default**
 
 - Identify the variables to keep in the model for probability of good run and the model for time (try to keep the same ones for the plots)
 
