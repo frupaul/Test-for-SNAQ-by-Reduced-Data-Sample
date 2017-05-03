@@ -202,3 +202,9 @@ Overall, it seems that `Nfail` and `ftolAbs` are variables that affect the perfo
 - Identify the variables to keep in the model for probability of good run and the model for time (try to keep the same ones for the plots)
 
 - Predict the probability (and then accuracy) and time with the models, and redo the plot of accuracy vs time, but now instead of the observed values of accuracy and time, we use the predicted values of accuracy and time (so the plot is smooth now)
+
+
+## Final steps
+- Finish report: new plot comparing runs with lower accuracy but more nruns=15,20
+- Decide new default: choose other options for users (not so accurate, but fast)
+- Clean up repository
