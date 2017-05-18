@@ -205,6 +205,9 @@ Overall, it seems that `Nfail` and `ftolAbs` are variables that affect the perfo
 
 
 ## Final steps
-- Finish report: new plot comparing runs with lower accuracy but more nruns=15,20
-- Decide new default: choose other options for users (not so accurate, but fast)
-- Clean up repository
+
+1. Could you please indicate the value of the box-cox transformation, for each data set? I looked for this information on your github repository, but could not find it. I wonder how close these values were to 0 (0 corresponds to the log transformation).
+
+2. Could you please update your repository with all of your latest scripts? Also please include your main file produced by your script, with the list of all the results: one row per run, and one column for each variable (like ftolAbs, …, machine darwin or marzano, computing time, distance from the estimated network to the true network, whether the estimated network is the true network or not, etc.)? Also please organize your files into directories with names that help understand what files do what.
+
+3. After you are done updating your github repo with all your files, could you also please update your main “readme” file in your github repository, to explain what was your full workflow (from running SNaQ to summarizing the result, to analyzing the results in R), where are file for each step in the workflow, and to explain what files do what? Some scripts were older and are obsolete, so it would be great to explain in your readme information if some files are obsolete and which files are most current.
